@@ -20,7 +20,7 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
 
-    "typeRoots": ["./node_modules/@types", "./src/@types"],
+    "typeRoots": ["./src/@types"],
 
     /* Alias */
     "baseUrl": ".",
@@ -29,6 +29,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src", "**/*.ts", "**/*.tsx"],
+  "include": ["src", "**/*.ts", "**/*.tsx", "tailwind.config.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

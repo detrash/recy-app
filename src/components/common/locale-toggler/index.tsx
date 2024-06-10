@@ -1,38 +1,38 @@
 "use client";
-import { CheckIcon, LanguagesIcon } from "lucide-react";
+import { LanguagesIcon } from "lucide-react";
 
 import {
   DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuShortcut,
+  // DropdownMenuContent,
+  // DropdownMenuItem,
+  // DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useChangeLocale, useCurrentLocale } from "@/locales/client";
+// import { useChangeLocale, useCurrentLocale } from "@/locales/client";
 
 import { Button } from "../../ui/button";
 
-const locales = [
-  {
-    icon: "🇺🇸",
-    name: "English",
-    value: "en",
-  },
-  {
-    icon: "🇪🇸",
-    name: "Español",
-    value: "es",
-  },
-  {
-    icon: "🇵🇹",
-    name: "Português",
-    value: "pt",
-  },
-];
+// const locales = [
+//   {
+//     icon: "🇺🇸",
+//     name: "English",
+//     value: "en",
+//   },
+//   {
+//     icon: "🇪🇸",
+//     name: "Español",
+//     value: "es",
+//   },
+//   {
+//     icon: "🇵🇹",
+//     name: "Português",
+//     value: "pt",
+//   },
+// ];
 
 export default function LocaleToggler() {
-  const changeLocale = useChangeLocale({ preserveSearchParams: true });
-  const currentLocale = useCurrentLocale();
+  // const changeLocale = useChangeLocale({ preserveSearchParams: true });
+  // const currentLocale = useCurrentLocale();
 
   return (
     <DropdownMenu>
@@ -42,7 +42,7 @@ export default function LocaleToggler() {
           <span className="sr-only">Change Locale</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="center">
+      {/* <DropdownMenuContent align="center">
         {locales.map((locale) => (
           <DropdownMenuItem
             key={locale.value}
@@ -59,7 +59,7 @@ export default function LocaleToggler() {
             ) : undefined}
           </DropdownMenuItem>
         ))}
-      </DropdownMenuContent>
+      </DropdownMenuContent> */}
     </DropdownMenu>
   );
 }

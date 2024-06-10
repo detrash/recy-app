@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import { Separator } from '@/components/ui/separator';
-import { useI18n } from '@/locales/client';
+import { Separator } from "@/components/ui/separator";
+// import { useI18n } from '@/locales/client';
 
-import ProfileForm from '../../components/profile/profile-form';
+import ProfileForm from "../../components/profile/profile-form";
 
 export default function SettingsMainScreen() {
-  const t = useI18n();
+  // const t = useI18n();
 
   return (
     <div className="space-y-6">

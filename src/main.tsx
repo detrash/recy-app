@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "@/styles/globals.css";
+import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "@/pages/app";
 import Dashboard from "@/pages/dashboard";
