@@ -4,7 +4,7 @@ import { Suspense } from "react";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { Icon } from "@iconify/react";
 import { useWeb3Modal } from "@web3modal/wagmi/react";
-import { useAccount, useConnect } from "wagmi";
+import { useAccount } from "wagmi";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -29,11 +29,11 @@ import { cn } from "@/utils/cn";
 
 export const Menu = () => {
   const { user } = useUser();
-  const { open, close } = useWeb3Modal();
+  const { open } = useWeb3Modal();
   const { address, isConnected } = useAccount();
 
   return (
-    <NavigationMenu className="flex min-w-full justify-between">
+    <NavigationMenu className="flex justify-between min-w-full">
       <NavigationMenuList>
         <NavigationMenuItem>
           <Link href={LINKS.NAV.HOME}>
