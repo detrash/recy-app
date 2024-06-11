@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "@/pages/app";
 import Dashboard from "@/pages/dashboard";
 import { Toaster } from "@/components/ui/toaster";
+import { Auth0Provider } from "@auth0/auth0-react";
 
 const router = createBrowserRouter([
   {
@@ -19,7 +20,15 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
-    <Toaster />
+    <Auth0Provider
+      domain={import.meta.env.VITE_ISSUER_BASE_URL}
+      clientId={import.meta.env.VITE_AUTH0_CLIENT_ID}
+      authorizationParams={{
+        redirect_uri: window.location.origin,
+      }}
+    >
+      <RouterProvider router={router} />
+      <Toaster />
+    </Auth0Provider>
   </React.StrictMode>
 );

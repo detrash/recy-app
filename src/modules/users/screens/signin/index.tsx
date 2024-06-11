@@ -1,10 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Suspense } from "react";
 import { Button } from "@/components/ui/button";
 import { LINKS } from "@/constants";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export default function SigninScreen() {
   // const t = useI18n();
+  const navigate = useNavigate();
+  const { isAuthenticated, loginWithRedirect } = useAuth0();
+
+  if (isAuthenticated) {
+    navigate("/dashboard");
+  }
 
   return (
     <div className="flex justify-between flex-1 h-lvh">
@@ -51,11 +58,13 @@ export default function SigninScreen() {
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos,
             laborum!
           </p>
-          <Link to={LINKS.AUTH.LOGIN}>
-            <Button size="lg" className="w-full">
-              Login
-            </Button>
-          </Link>
+          <Button
+            onClick={() => loginWithRedirect()}
+            size="lg"
+            className="w-full"
+          >
+            Login
+          </Button>
         </div>
       </main>
       <aside className="relative flex-col items-center justify-center flex-1 flex-shrink hidden h-lvh basis-1/4 xl:flex">
