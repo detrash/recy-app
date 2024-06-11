@@ -1,7 +1,7 @@
 import SigninScreen from "@/modules/users/screens/signin";
 
-function App() {
+function Signin() {
   return <SigninScreen />;
 }
 
-export default App;
+export default Signin;

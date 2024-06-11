@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import App from "@/pages/app";
+import Signin from "@/pages/signin";
 import Dashboard from "@/pages/dashboard";
 import { Toaster } from "@/components/ui/toaster";
 import { Auth0Provider } from "@auth0/auth0-react";
@@ -10,7 +10,7 @@ import { Auth0Provider } from "@auth0/auth0-react";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <Signin />,
   },
   {
     path: "/dashboard",
