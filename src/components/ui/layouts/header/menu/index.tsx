@@ -1,32 +1,32 @@
-"use client";
+'use client';
 
-import { Suspense } from "react";
+import { Suspense } from 'react';
+import { Link } from 'react-router-dom';
 // import { useUser } from "@auth0/nextjs-auth0/client";
-import { Icon } from "@iconify/react";
-import { useWeb3Modal } from "@web3modal/wagmi/react";
-import { useAccount } from "wagmi";
+import { Icon } from '@iconify/react';
+import { useWeb3Modal } from '@web3modal/wagmi/react';
+import { useAccount } from 'wagmi';
+
 // import Image from "next/image";
 // import Link from "next/link";
 // import { usePathname } from "next/navigation";
-
-import LocaleToggler from "@/components/common/locale-toggler";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import LocaleToggler from '@/components/common/locale-toggler';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from '@/components/ui/dropdown-menu';
 import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
   navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu";
-import { LINKS } from "@/constants";
-import { cn } from "@/utils/cn";
-import { Link } from "react-router-dom";
+} from '@/components/ui/navigation-menu';
+import { LINKS } from '@/constants';
+import { cn } from '@/utils/cn';
 
 export const Menu = () => {
   // const { user } = useUser();
@@ -34,7 +34,7 @@ export const Menu = () => {
   const { address, isConnected } = useAccount();
 
   return (
-    <NavigationMenu className="flex justify-between min-w-full">
+    <NavigationMenu className="flex min-w-full justify-between">
       <NavigationMenuList>
         <NavigationMenuItem>
           {/* <Link to={LINKS.NAV.HOME}>
@@ -49,10 +49,7 @@ export const Menu = () => {
         </NavigationMenuItem>
 
         <NavigationMenuItem>
-          <Link
-            className={`${navigationMenuTriggerStyle()}`}
-            to={LINKS.NAV.DASHBOARD}
-          >
+          <Link className={`${navigationMenuTriggerStyle()}`} to={LINKS.NAV.DASHBOARD}>
             Dashboard
             <Icon
               icon="material-symbols-light:team-dashboard-outline"
@@ -64,24 +61,15 @@ export const Menu = () => {
         </NavigationMenuItem>
 
         <NavigationMenuItem>
-          <Link
-            className={navigationMenuTriggerStyle()}
-            to={LINKS.NAV.SUBMIT_FORM}
-          >
-            Submit Form{" "}
-            <Icon icon="ph:recycle" width="16" height="16" className="ml-1" />
+          <Link className={navigationMenuTriggerStyle()} to={LINKS.NAV.SUBMIT_FORM}>
+            Submit Form <Icon icon="ph:recycle" width="16" height="16" className="ml-1" />
           </Link>
         </NavigationMenuItem>
 
         <NavigationMenuItem>
           <Link className={navigationMenuTriggerStyle()} to={LINKS.NAV.ADMIN}>
             Admin
-            <Icon
-              icon="ic:sharp-admin-panel-settings"
-              width="16"
-              height="16"
-              className="ml-1"
-            />
+            <Icon icon="ic:sharp-admin-panel-settings" width="16" height="16" className="ml-1" />
           </Link>
         </NavigationMenuItem>
       </NavigationMenuList>
@@ -89,7 +77,7 @@ export const Menu = () => {
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuLink
-            className={cn("hover:cursor-pointer", navigationMenuTriggerStyle())}
+            className={cn('hover:cursor-pointer', navigationMenuTriggerStyle())}
             onClick={() => open()}
           >
             {isConnected && address ? (
@@ -97,12 +85,7 @@ export const Menu = () => {
             ) : (
               <>
                 Connect Wallet
-                <Icon
-                  icon="ph:wallet-thin"
-                  width="16"
-                  height="16"
-                  className="ml-1"
-                />
+                <Icon icon="ph:wallet-thin" width="16" height="16" className="ml-1" />
               </>
             )}
           </NavigationMenuLink>
@@ -119,9 +102,7 @@ export const Menu = () => {
             <DropdownMenuTrigger className="px-4">
               <Avatar>
                 {/* <AvatarImage src={user?.picture ?? ""} alt="User profile" /> */}
-                <AvatarFallback className="text-xs">
-                  {/* {user?.name} */}
-                </AvatarFallback>
+                <AvatarFallback className="text-xs">{/* {user?.name} */}</AvatarFallback>
               </Avatar>
             </DropdownMenuTrigger>
             <DropdownMenuContent>

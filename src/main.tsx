@@ -8,7 +8,7 @@ import Signin from '@/pages/signin';
 
 import { Providers } from './components/providers';
 
-import './index.css';
+import './styles/globals.css';
 
 const router = createBrowserRouter([
   {
