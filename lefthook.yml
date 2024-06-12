@@ -1,6 +1,6 @@
 commit-msg:
   scripts:
-    'commitlint.sh':
+    'echo $(head -n1 $1) | npx commitlint --color':
       runner: bash
 
 pre-commit:
