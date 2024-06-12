@@ -4,7 +4,6 @@ commit-msg:
       runner: bash
 
 pre-commit:
-  parallel: true
   commands:
     frontend-lint:
       glob: 'src/**/*.{ts,tsx,js,jsx}'
