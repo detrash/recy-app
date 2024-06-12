@@ -33,6 +33,7 @@ ReactDOM.createRoot(document.querySelector('#root')!).render(
   <React.StrictMode>
     <Providers>
       <RouterProvider router={router} />
+
       <Toaster />
     </Providers>
   </React.StrictMode>,
