@@ -1,4 +1,5 @@
 'use client';
+import { useTranslation } from 'react-i18next';
 import { CheckIcon, LanguagesIcon } from 'lucide-react';
 
 import {
@@ -33,6 +34,11 @@ export default function LocaleToggler() {
   // const changeLocale = useChangeLocale({ preserveSearchParams: true });
   // const currentLocale = useCurrentLocale();
 
+  const { t, i18n } = useTranslation();
+
+  console.log('t', t);
+  console.log('i18n', i18n);
+
   // TODO: remove
   const currentLocale = 'en';
 
@@ -48,7 +54,7 @@ export default function LocaleToggler() {
         {locales.map((locale) => (
           <DropdownMenuItem
             key={locale.value}
-            // onClick={() => changeLocale(locale.value as typeof currentLocale)}
+            onClick={() => i18n.changeLanguage(locale.value)}
             disabled={locale.value === currentLocale}
           >
             <span className="cursor-pointer">

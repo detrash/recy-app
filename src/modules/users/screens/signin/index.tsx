@@ -33,10 +33,10 @@ export default function SigninScreen() {
 
         <div className="flex max-w-xl flex-1 flex-col justify-center gap-8 p-5">
           <div className="flex flex-col gap-4">
-            <h1 className="text-6xl font-bold">Welcome to</h1>
-            <span className="text-6xl font-bold text-primary">Recy App</span>
+            <h1 className="text-6xl font-bold lg:text-7xl">Welcome to</h1>
+            <span className="text-6xl font-bold text-primary lg:text-7xl">Recy App</span>
           </div>
-          <p className="text-base text-gray-500">
+          <p className="text-xl text-gray-500">
             Let's end waste pollution at its source. Let's transform how we think about trash and
             recycling.
           </p>

@@ -1,5 +1,6 @@
-import DashboardScreen from "@/modules/dashboard/screens/main";
-import { withAuthenticationRequired } from "@auth0/auth0-react";
+import { withAuthenticationRequired } from '@auth0/auth0-react';
+
+import DashboardScreen from '@/modules/dashboard/screens/main';
 
 function Dashboard() {
   return <DashboardScreen />;
