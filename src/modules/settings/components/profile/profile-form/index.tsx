@@ -1,46 +1,38 @@
-import { useFieldArray, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
+import { useAuth0 } from '@auth0/auth0-react';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Link } from 'lucide-react';
 import { z } from 'zod';
 
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
-import { Textarea } from '@/components/ui/textarea';
+import { Label } from '@/components/ui/label';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import {} from '@/components/ui/radio-group';
+import { Separator } from '@/components/ui/separator';
 import { toast } from '@/components/ui/use-toast';
-import { cn } from '@/utils/cn';
 
 const profileFormSchema = z.object({
-  bio: z.string().max(160).min(4),
   email: z
     .string({
       required_error: 'Please select an email to display.',
     })
     .email(),
-  urls: z
-    .array(
-      z.object({
-        value: z.string().url({ message: 'Please enter a valid URL.' }),
-      }),
-    )
-    .optional(),
-  username: z
-    .string()
+  phone: z.number({
+    required_error: 'Please select a number to display.',
+  }),
+  preferred_name: z
+    .string({
+      required_error: 'Please select a preferred name to display.',
+    })
     .min(2, {
       message: 'Username must be at least 2 characters.',
     })
@@ -51,22 +43,12 @@ const profileFormSchema = z.object({
 
 type ProfileFormValues = z.infer<typeof profileFormSchema>;
 
-// This can come from your database or API.
-const defaultValues: Partial<ProfileFormValues> = {
-  bio: 'I own a computer.',
-  urls: [{ value: 'https://shadcn.com' }, { value: 'http://twitter.com/shadcn' }],
-};
-
 export default function ProfileForm() {
+  const { user } = useAuth0();
   const form = useForm<ProfileFormValues>({
-    defaultValues,
+    // defaultValues,
     mode: 'onChange',
     resolver: zodResolver(profileFormSchema),
-  });
-
-  const { fields, append } = useFieldArray({
-    control: form.control,
-    name: 'urls',
   });
 
   function onSubmit(data: ProfileFormValues) {
@@ -83,81 +65,19 @@ export default function ProfileForm() {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        <FormField
-          control={form.control}
-          name="username"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Username</FormLabel>
-              <FormControl>
-                <Input placeholder="shadcn" {...field} />
-              </FormControl>
-              <FormDescription>
-                This is your public display name. It can be your real name or a pseudonym. You can
-                only change this once every 30 days.
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Email</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
-                <FormControl>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select a verified email to display" />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  <SelectItem value="m@example.com">m@example.com</SelectItem>
-                  <SelectItem value="m@google.com">m@google.com</SelectItem>
-                  <SelectItem value="m@support.com">m@support.com</SelectItem>
-                </SelectContent>
-              </Select>
-              <FormDescription>
-                You can manage verified email addresses in your{' '}
-                <Link to="/examples/forms">email settings</Link>.
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="bio"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Bio</FormLabel>
-              <FormControl>
-                <Textarea
-                  placeholder="Tell us a little bit about yourself"
-                  className="resize-none"
-                  {...field}
-                />
-              </FormControl>
-              <FormDescription>
-                You can <span>@mention</span> other users and organizations to link to them.
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <div>
-          {fields.map((field, index) => (
+        <div className="flex flex-col gap-2">
+          <h2 className="text-base">Basic Info</h2>
+          <Separator />
+        </div>
+
+        <div className="flex flex-col gap-4">
+          <div className="grid grid-cols-6 gap-3">
             <FormField
               control={form.control}
-              key={field.id}
-              name={`urls.${index}.value`}
+              name="preferred_name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className={cn(index !== 0 && 'sr-only')}>URLs</FormLabel>
-                  <FormDescription className={cn(index !== 0 && 'sr-only')}>
-                    Add links to your website, blog, or social media profiles.
-                  </FormDescription>
+                  <FormLabel>Preferred Name</FormLabel>
                   <FormControl>
                     <Input {...field} />
                   </FormControl>
@@ -165,18 +85,68 @@ export default function ProfileForm() {
                 </FormItem>
               )}
             />
-          ))}
-          <Button
-            type="button"
-            variant="outline"
-            size="sm"
-            className="mt-2"
-            onClick={() => append({ value: '' })}
-          >
-            Add URL
-          </Button>
+
+            <FormField
+              control={form.control}
+              name="phone"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Phone number</FormLabel>
+                  <FormControl>
+                    <Input {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem className="">
+                <FormLabel>Email</FormLabel>
+                <FormControl>
+                  <Input {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <Label>Foto</Label>
+          <Avatar>
+            <AvatarImage
+              className="ring-neutral h-12 w-12 rounded-full ring-[1px]"
+              src={user?.picture ?? ''}
+              alt="User profile"
+            />
+            <AvatarFallback className="text-xs">{user?.name}</AvatarFallback>
+          </Avatar>
         </div>
-        <Button type="submit">Update profile</Button>
+
+        <div className="flex flex-col gap-2">
+          <h2 className="text-base">Profile Type</h2>
+          <Separator />
+        </div>
+
+        <RadioGroup defaultValue="option-one">
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="option-hodler" id="option-hodler" />
+            <Label htmlFor="option-hodler">Hodler</Label>
+          </div>
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="option-recycler" id="option-recycler" />
+            <Label htmlFor="option-recycler">Recycler</Label>
+          </div>
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="option-waste" id="option-waste" />
+            <Label htmlFor="option-waste">Waste Generator</Label>
+          </div>
+        </RadioGroup>
+
+        <Button type="submit">Save Changes</Button>
       </form>
     </Form>
   );

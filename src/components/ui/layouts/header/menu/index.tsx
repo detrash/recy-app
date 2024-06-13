@@ -2,16 +2,13 @@
 
 import { Suspense } from 'react';
 import { Link } from 'react-router-dom';
-// import { useUser } from "@auth0/nextjs-auth0/client";
+import { useAuth0 } from '@auth0/auth0-react';
 import { Icon } from '@iconify/react';
 import { useWeb3Modal } from '@web3modal/wagmi/react';
 import { useAccount } from 'wagmi';
 
-// import Image from "next/image";
-// import Link from "next/link";
-// import { usePathname } from "next/navigation";
 import LocaleToggler from '@/components/common/locale-toggler';
-import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -29,7 +26,7 @@ import { LINKS } from '@/constants';
 import { cn } from '@/utils/cn';
 
 export const Menu = () => {
-  // const { user } = useUser();
+  const { user } = useAuth0();
   const { open } = useWeb3Modal();
   const { address, isConnected } = useAccount();
 
@@ -37,15 +34,15 @@ export const Menu = () => {
     <NavigationMenu className="flex min-w-full justify-between">
       <NavigationMenuList>
         <NavigationMenuItem>
-          {/* <Link to={LINKS.NAV.HOME}>
-            <Image
+          <Link to={LINKS.NAV.HOME}>
+            <img
               src="/assets/brand/recy-logo.png"
               width={64}
               height={64}
               alt="Recy Logo"
               className="mr-4"
             />
-          </Link> */}
+          </Link>
         </NavigationMenuItem>
 
         <NavigationMenuItem>
@@ -101,8 +98,8 @@ export const Menu = () => {
           <DropdownMenu>
             <DropdownMenuTrigger className="px-4">
               <Avatar>
-                {/* <AvatarImage src={user?.picture ?? ""} alt="User profile" /> */}
-                <AvatarFallback className="text-xs">{/* {user?.name} */}</AvatarFallback>
+                <AvatarImage src={user?.picture ?? ''} alt="User profile" />
+                <AvatarFallback className="text-xs">{user?.name}</AvatarFallback>
               </Avatar>
             </DropdownMenuTrigger>
             <DropdownMenuContent>

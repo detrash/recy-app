@@ -1,7 +1,7 @@
-import SigninScreen from '@/modules/users/screens/signin';
+import HomeScreen from '@/modules/home/screens/main';
 
-function Signin() {
-  return <SigninScreen />;
+function Home() {
+  return <HomeScreen />;
 }
 
-export default Signin;
+export default Home;

@@ -1,12 +1,13 @@
 import { Suspense } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 
 import LocaleToggler from '@/components/common/locale-toggler';
 import { Button } from '@/components/ui/button';
 
-export default function SigninScreen() {
-  // const t = useI18n();
+export default function HomeScreen() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const { isAuthenticated, loginWithRedirect } = useAuth0();
 
@@ -41,7 +42,7 @@ export default function SigninScreen() {
             recycling.
           </p>
           <Button onClick={() => loginWithRedirect()} size="lg" className="w-full">
-            Login
+            {t('home.login')}
           </Button>
         </div>
       </main>
