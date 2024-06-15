@@ -9,6 +9,7 @@ import { useAccount } from 'wagmi';
 
 import LocaleToggler from '@/components/common/locale-toggler';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -26,7 +27,7 @@ import { LINKS } from '@/constants';
 import { cn } from '@/utils/cn';
 
 export const Menu = () => {
-  const { user } = useAuth0();
+  const { user, logout } = useAuth0();
   const { open } = useWeb3Modal();
   const { address, isConnected } = useAccount();
 
@@ -34,7 +35,7 @@ export const Menu = () => {
     <NavigationMenu className="flex min-w-full justify-between">
       <NavigationMenuList>
         <NavigationMenuItem>
-          <Link to={LINKS.NAV.HOME}>
+          <Link to={LINKS.HOME}>
             <img
               src="/assets/brand/recy-logo.png"
               width={64}
@@ -46,7 +47,7 @@ export const Menu = () => {
         </NavigationMenuItem>
 
         <NavigationMenuItem>
-          <Link className={`${navigationMenuTriggerStyle()}`} to={LINKS.NAV.DASHBOARD}>
+          <Link className={`${navigationMenuTriggerStyle()}`} to={LINKS.APP}>
             Dashboard
             <Icon
               icon="material-symbols-light:team-dashboard-outline"
@@ -58,13 +59,13 @@ export const Menu = () => {
         </NavigationMenuItem>
 
         <NavigationMenuItem>
-          <Link className={navigationMenuTriggerStyle()} to={LINKS.NAV.SUBMIT_FORM}>
+          <Link className={navigationMenuTriggerStyle()} to={LINKS.SUBMIT_FORM}>
             Submit Form <Icon icon="ph:recycle" width="16" height="16" className="ml-1" />
           </Link>
         </NavigationMenuItem>
 
         <NavigationMenuItem>
-          <Link className={navigationMenuTriggerStyle()} to={LINKS.NAV.ADMIN}>
+          <Link className={navigationMenuTriggerStyle()} to={LINKS.ADMIN_PANEL}>
             Admin
             <Icon icon="ic:sharp-admin-panel-settings" width="16" height="16" className="ml-1" />
           </Link>
@@ -104,10 +105,18 @@ export const Menu = () => {
             </DropdownMenuTrigger>
             <DropdownMenuContent>
               <DropdownMenuItem>
-                <Link to={LINKS.NAV.PROFILE}>Your Profile</Link>
+                <Button asChild variant="link">
+                  <Link to={LINKS.PROFILE}>Your Profile</Link>
+                </Button>
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <Link to={LINKS.AUTH.LOGOUT}>Sign out</Link>
+                <Button
+                  className="color-secondary color w-full text-center"
+                  variant="link"
+                  onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}
+                >
+                  Sign out
+                </Button>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
