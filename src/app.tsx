@@ -1,10 +1,11 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import { Header } from './components/ui/layouts/header';
-import Dashboard from './pages/dashboard';
-import Home from './pages/home';
-import Onboarding from './pages/onboarding';
-import Profile from './pages/profile';
+import Dashboard from './routes/dashboard';
+import Onboarding from './routes/onboarding';
+import Profile from './routes/profile';
+import Root from './routes/root';
+import Submit from './routes/submit';
 
 const router = createBrowserRouter([
   {
@@ -18,7 +19,7 @@ const router = createBrowserRouter([
         path: '/settings',
       },
       {
-        element: <Dashboard />,
+        element: <Submit />,
         path: '/submit',
       },
       {
@@ -42,7 +43,7 @@ const router = createBrowserRouter([
     element: <Header />,
   },
   {
-    element: <Home />,
+    element: <Root />,
     path: '/',
   },
 ]);
