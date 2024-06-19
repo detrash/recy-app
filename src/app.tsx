@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import { Header } from './components/ui/layouts/header';
+import Calculator from './routes/calculator';
 import Dashboard from './routes/dashboard';
 import Onboarding from './routes/onboarding';
 import Profile from './routes/profile';
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
       },
     ],
     element: <Header />,
+  },
+  {
+    element: <Calculator />,
+    path: '/calculator',
   },
   {
     element: <Root />,
