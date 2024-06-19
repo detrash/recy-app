@@ -25,7 +25,7 @@ const profileFormSchema = z.object({
       required_error: 'Please select an email to display.',
     })
     .email(),
-  phone: z.number({
+  phone: z.string({
     required_error: 'Please select a number to display.',
   }),
   preferred_name: z

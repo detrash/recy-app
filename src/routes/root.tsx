@@ -1,7 +1,7 @@
 import HomeScreen from '@/modules/home/screens/main';
 
-function Home() {
+function Root() {
   return <HomeScreen />;
 }
 
-export default Home;
+export default Root;

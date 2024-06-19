@@ -1,23 +1,25 @@
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { Form } from 'react-router-dom';
+import { redirect } from 'react-router-dom';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 
 import { Button } from '@/components/ui/button';
-import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { toast } from '@/components/ui/use-toast';
 
 const welcomeFormSchema = z.object({
-  email: z
-    .string({
-      required_error: 'Please select an email to display.',
-    })
-    .email(),
-  phone: z.number({
+  phone: z.string({
     required_error: 'Please select a number to display.',
   }),
   preferred_name: z
@@ -43,6 +45,7 @@ export const Register = () => {
   });
 
   function onSubmit(data: WelcomeFormValues) {
+    console.log(data);
     toast({
       description: (
         <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
@@ -51,6 +54,8 @@ export const Register = () => {
       ),
       title: 'You submitted the following values:',
     });
+
+    redirect('/dashboard');
   }
 
   return (
