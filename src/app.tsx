@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Header } from './components/ui/layouts/header';
 import Dashboard from './pages/dashboard';
 import Home from './pages/home';
+import KYC from './pages/kyc-test';
 import Onboarding from './pages/onboarding';
 import Profile from './pages/profile';
 
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
   {
     element: <Home />,
     path: '/',
+  },
+  {
+    element: <KYC />,
+    path: '/kyc',
   },
 ]);
 

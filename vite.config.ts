@@ -1,19 +1,25 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import tsconfigPaths from "vite-tsconfig-paths";
-import { resolve } from "path";
+import react from '@vitejs/plugin-react';
+import path from 'node:path';
+import { defineConfig } from 'vite';
+import tsconfigPaths from 'vite-tsconfig-paths';
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react(), tsconfigPaths()],
-  server: {
-    port: 3000,
-  },
   resolve: {
     alias: {
-      app: resolve(__dirname, "src", "app"),
-      components: resolve(__dirname, "src", "components"),
-      hooks: resolve(__dirname, "src", "hooks"),
+      app: path.resolve(import.meta.dirname, 'src', 'app'),
+      components: path.resolve(import.meta.dirname, 'src', 'components'),
+      hooks: path.resolve(import.meta.dirname, 'src', 'hooks'),
+    },
+  },
+  server: {
+    port: 3000,
+    proxy: {
+      '/api': {
+        changeOrigin: true,
+        secure: false,
+        target: 'http://localhost:4000',
+      },
     },
   },
 });
