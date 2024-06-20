@@ -1,25 +1,21 @@
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 
-export default function HomeScreen() {
+export default function CalculatorScreen() {
   useTranslation();
+
+  const navigate = useNavigate();
+
+  const handleAcquireCertificate = () => {
+    navigate('/calculator/steps');
+  };
 
   return (
     <>
-      <header className="sticky top-0 w-full border-b bg-white p-3">
-        <div className="container flex justify-center">
-          <img
-            src="/public/assets/brand/recy-network-logo.png"
-            alt="Recy Network"
-            width={120}
-            height={120}
-          />
-        </div>
-      </header>
-
-      <section className="bg- bg-[positon: '100%'] ext-white bg- flex justify-center bg-[url('/assets/bg/ocean.jpg')] bg-cover bg-center p-6 text-center text-white">
+      <section className="bg-[positon: '100%'] ext-white bg- flex justify-center bg-[url('/assets/bg/ocean.jpg')] bg-cover bg-center p-6 text-center text-white">
         <div className="flex flex-col gap-4">
           <p className="max-w-96 text-lg">
             If you don't know you can make an estimate multiplying 1.5 kg per person/employee per
@@ -27,7 +23,9 @@ export default function HomeScreen() {
           </p>
 
           <div>
-            <Button size="lg">Acquire Recy Certificate</Button>
+            <Button size="lg" onClick={handleAcquireCertificate}>
+              Acquire Recy Certificate
+            </Button>
           </div>
         </div>
       </section>
@@ -56,13 +54,22 @@ export default function HomeScreen() {
 
           <CardContent>
             <p className="text-sm lg:text-base">
-              We present you the RECY Network for making our world truly clean (how it works video
-              link https://youtu.be/wFLzF6PKKPM). Smart Contracts and DLT are the missing link of
-              creating a truly profitable recycling global production chain and thus a circular
-              global supply chain. It is through decentralized, transparent and efficient effort
-              that we are going to disrupt the waste industry and clean our world (add methodology
-              presentation and paper link
-              https://drive.google.com/drive/folders/1QESyN8IlyacfpWHDpgmCcoyqqiJXAbSK?usp=sharing).
+              We present you the RECY Network for making our{' '}
+              <a className="underline" target="_blank" href="https://youtu.be/wFLzF6PKKPM">
+                world truly clean
+              </a>
+              . Smart Contracts and DLT are the missing link of creating a truly profitable
+              recycling global production chain and thus a circular global supply chain. It is
+              through decentralized, transparent and efficient effort that we are going to disrupt
+              the waste industry and{' '}
+              <a
+                className="underline"
+                target="_blank"
+                href="https://drive.google.com/file/d/19aRA1INjIu3PKW9Q4vvHpLYDCEDXmvza/view?usp=drivesdk"
+              >
+                clean our world
+              </a>
+              .
             </p>
           </CardContent>
         </Card>

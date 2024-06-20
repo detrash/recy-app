@@ -1,7 +1,10 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import { Header } from './components/ui/layouts/header';
+import { HeaderSimple } from './components/ui/layouts/header-simple';
+import CalculatorResultScreen from './modules/calculator/screens/result';
 import Calculator from './routes/calculator';
+import CalculatorStepsScreen from './routes/calculator/steps';
 import Dashboard from './routes/dashboard';
 import Onboarding from './routes/onboarding';
 import Profile from './routes/profile';
@@ -44,8 +47,21 @@ const router = createBrowserRouter([
     element: <Header />,
   },
   {
-    element: <Calculator />,
-    path: '/calculator',
+    children: [
+      {
+        element: <CalculatorStepsScreen />,
+        path: '/calculator/steps',
+      },
+      {
+        element: <CalculatorResultScreen />,
+        path: '/calculator/result',
+      },
+      {
+        element: <Calculator />,
+        path: '/calculator',
+      },
+    ],
+    element: <HeaderSimple />,
   },
   {
     element: <Root />,
