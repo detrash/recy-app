@@ -15,11 +15,12 @@ export default function CalculatorScreen() {
 
   return (
     <>
-      <section className="bg-[positon: '100%'] ext-white bg- flex justify-center bg-[url('/assets/bg/ocean.jpg')] bg-cover bg-center p-6 text-center text-white">
-        <div className="flex flex-col gap-4">
+      <section className="flex justify-center bg-[url('/assets/bg/ocean-dark.jpg')] bg-cover bg-center p-6 text-center text-white">
+        <div className="border-md flex flex-col gap-4 p-2">
           <p className="max-w-96 text-lg">
-            If you don't know you can make an estimate multiplying 1.5 kg per person/employee per
-            day which is the global average or get in touch for us to help you know!
+            Recy Certificate is the best way for your business to contribute for overcoming waste
+            pollution and support recycling and composting. See how much cRECY savings you can build
+            to earn your Recy Certificate.
           </p>
 
           <div>
@@ -37,12 +38,11 @@ export default function CalculatorScreen() {
           </CardHeader>
           <CardContent>
             <p className="text-sm lg:text-base">
-              We need to make our world safe from waste pollution. We need it for our own sake. For
-              marine life&apos;ss sake and for nature&apos;s sake. We already have 300 million tons
-              of trash in our oceans. 14 million new tons getting there every year on average.
-              Today&apos;ss solutions, despite very important, is mostly focused on getting trash
-              out of the oceans and rivers and not preventing it to get there, not dealing with the
-              cause of the problem.
+              We need to build a world free from waste pollution. We need it for our own sake. For
+              nature's sake. We already have over 300 million tons of trash in our environment. 14
+              million new tons getting to our oceans every year on average. Today's solutions,
+              despite very important, is mostly focused on getting trash out of the oceans and
+              rivers and not preventing waste to get to nature.
             </p>
           </CardContent>
         </Card>
@@ -54,22 +54,9 @@ export default function CalculatorScreen() {
 
           <CardContent>
             <p className="text-sm lg:text-base">
-              We present you the RECY Network for making our{' '}
-              <a className="underline" target="_blank" href="https://youtu.be/wFLzF6PKKPM">
-                world truly clean
-              </a>
-              . Smart Contracts and DLT are the missing link of creating a truly profitable
-              recycling global production chain and thus a circular global supply chain. It is
-              through decentralized, transparent and efficient effort that we are going to disrupt
-              the waste industry and{' '}
-              <a
-                className="underline"
-                target="_blank"
-                href="https://drive.google.com/file/d/19aRA1INjIu3PKW9Q4vvHpLYDCEDXmvza/view?usp=drivesdk"
-              >
-                clean our world
-              </a>
-              .
+              The Recy certificate represents climate compensation through financially supporting
+              actors that conducts recycling, composting and/or other sustainable and circular waste
+              treatment activities in different regions of the world.
             </p>
           </CardContent>
         </Card>
@@ -81,13 +68,9 @@ export default function CalculatorScreen() {
 
           <CardContent>
             <p className="text-sm lg:text-base">
-              DeTrash is the RECY Notwork founder and key contributor today. DeTrash offers a
-              Distributed Ledger-based solution to clean our planet&apos;s oceans and rivers.
-              Through tokenization and decentralized efforts, users worldwide participate in
-              preventing trash from reaching water bodies, making a global impact. The
-              project&apos;s primary objectives are to support resilience, cybersecurity, and
-              emergency response in disadvantaged communities while facilitating distributed power
-              sharing and promoting sustainable energy solutions.
+              DeTrash is the RECY Network founder and main contributor. DeTrash offers tech based
+              solutions to clean our world. DeTrash's vision is that a world without waste pollution
+              is not only possible but it's the best alternative to a more equitable and free world.
             </p>
           </CardContent>
         </Card>

@@ -25,9 +25,9 @@ export default function CalculatorResultScreen() {
 
   return (
     <>
-      <section className="bg- bg-[positon: '100%'] ext-white bg- flex justify-center bg-[url('/assets/bg/ocean.jpg')] bg-cover bg-center p-6 text-center text-white">
+      <section className="bg- bg-[positon: '100%'] ext-white bg- flex justify-center bg-[url('/assets/bg/ocean-dark.jpg')] bg-cover bg-center p-6 text-center text-white">
         <div className="flex flex-col gap-4">
-          {!!needContact && (
+          {Boolean(needContact) && (
             <div className="flex flex-col gap-4">
               <p className="max-w-96 text-lg">Contact Form Here</p>
               <Button size="lg">Contact us</Button>
