@@ -62,7 +62,7 @@ export const CalculatorStepTwo = () => {
   return (
     <Form {...form}>
       <form
-        className="flex flex-1 flex-col gap-2 sm:gap-12"
+        className="flex flex-1 flex-col gap-2"
         onSubmit={form.handleSubmit(onSubmit)}
         id="calculator-form"
       >
@@ -72,22 +72,20 @@ export const CalculatorStepTwo = () => {
           </h2>
         </section>
 
-        <section className="grid grid-cols-6 gap-3">
-          <div className="col-span-6 sm:col-span-3">
-            <FormField
-              control={form.control}
-              name="employees_quantity"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Employees Quantity</FormLabel>
-                  <FormControl>
-                    <Input {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </div>
+        <section>
+          <FormField
+            control={form.control}
+            name="employees_quantity"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Employees Quantity</FormLabel>
+                <FormControl>
+                  <Input {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
         </section>
       </form>
 

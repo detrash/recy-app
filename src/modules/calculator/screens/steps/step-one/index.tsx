@@ -64,7 +64,7 @@ export const CalculatorStepOne = () => {
   return (
     <Form {...form}>
       <form
-        className="flex flex-1 flex-col gap-2 sm:gap-12"
+        className="flex flex-1 flex-col gap-2"
         onSubmit={form.handleSubmit(onSubmit)}
         id="calculator-form"
       >
@@ -74,30 +74,28 @@ export const CalculatorStepOne = () => {
           </h2>
         </section>
 
-        <section className="grid grid-cols-6 gap-3">
-          <div className="col-span-6 sm:col-span-3">
-            <FormField
-              control={form.control}
-              name="company_type"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Company Type</FormLabel>
-                  <Select onValueChange={field.onChange} defaultValue={field.value}>
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select a option" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      <SelectItem value="product">Product</SelectItem>
-                      <SelectItem value="service">Service</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </div>
+        <section>
+          <FormField
+            control={form.control}
+            name="company_type"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Company Type</FormLabel>
+                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                  <FormControl>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select a option" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    <SelectItem value="product">Product</SelectItem>
+                    <SelectItem value="service">Service</SelectItem>
+                  </SelectContent>
+                </Select>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
         </section>
       </form>
 
