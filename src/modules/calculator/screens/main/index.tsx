@@ -31,7 +31,7 @@ export default function CalculatorScreen() {
         </div>
       </section>
 
-      <div className="mx-auto my-6 flex max-w-2xl flex-col gap-6">
+      <div className="container mx-auto my-6 flex max-w-2xl flex-col gap-6">
         <Card className="sm:rounded-xl sm:shadow-xl">
           <CardHeader className="flex flex-row items-center gap-4 pb-2">
             <h2 className="text-lg lg:text-2xl">Transforming waste management</h2>
