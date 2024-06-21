@@ -1,5 +1,3 @@
-import { useTranslation } from 'react-i18next';
-
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { useCalculatorStore } from '@/stores/use-calculator';
@@ -25,15 +23,11 @@ export default function CalculatorResultScreen() {
     return wasteFootprint * 0.01;
   };
 
-  useTranslation();
-
-  console.log(inputs);
-
   return (
     <>
       <section className="bg- bg-[positon: '100%'] ext-white bg- flex justify-center bg-[url('/assets/bg/ocean.jpg')] bg-cover bg-center p-6 text-center text-white">
         <div className="flex flex-col gap-4">
-          {needContact && (
+          {!!needContact && (
             <div className="flex flex-col gap-4">
               <p className="max-w-96 text-lg">Contact Form Here</p>
               <Button size="lg">Contact us</Button>
