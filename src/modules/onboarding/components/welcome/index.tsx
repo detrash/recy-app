@@ -20,7 +20,7 @@ export const Welcome = ({ onGetStarted }: { onGetStarted: () => void }) => {
 
       <div className="flex flex-col items-center">
         <picture className="h-72 w-72 sm:h-96 sm:w-96">
-          <img src="/public/assets/brand/recy-logo.png" alt="RECY token logo" />
+          <img src="/assets/brand/recy-logo.png" alt="RECY token logo" />
         </picture>
 
         <p className="text-center text-base leading-relaxed">
