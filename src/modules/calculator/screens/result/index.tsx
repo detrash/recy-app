@@ -75,8 +75,8 @@ export default function CalculatorResultScreen() {
           {!needContact && (
             <div className="flex flex-col gap-4">
               <div className="flex flex-col gap-2">
-                <h2 className="text-bold text-bold text-6xl text-primary">
-                  {Math.ceil(handleCalculateCrecys())} cRECYs
+                <h2 className="text-bold text-bold text-6xl">
+                  <span className="text-blue-400">{Math.ceil(handleCalculateCrecys())}</span> cRECYs
                 </h2>
                 <span className="text-base">per month</span>
               </div>
