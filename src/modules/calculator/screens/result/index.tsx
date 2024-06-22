@@ -16,11 +16,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { useCalculatorStore } from '@/stores/use-calculator';
 
-// 4-
-// Before checkout asks if user has a metamask, trust wallet or Valora wallet and if so what is the public address.
-// Explains that after payment user has 15 days to provide a wallet public address per email otherwise it will
-// be considered the user wants to donate the locked assets back to sustainable waste treatment projects.
-// Small content paragraph reinforcing the user agrees to the terms that this means the user is acquiring and choosing to lock cRECYs for 24 months period.
+import { ResultContact } from './contact';
 
 const checkoutFormValue = z.object({
   terms_and_conditions: z.boolean({
@@ -61,27 +57,22 @@ export default function CalculatorResultScreen() {
     console.log(data);
   }
 
+  if (needContact) {
+    return <ResultContact />;
+  }
+
   return (
     <>
       <section className="bg- bg-[positon: '100%'] ext-white bg- flex justify-center bg-[url('/assets/bg/ocean-dark.jpg')] bg-cover bg-center p-6 text-center text-white">
         <div className="flex flex-col gap-4">
-          {Boolean(needContact) && (
-            <div className="flex flex-col gap-4">
-              <p className="max-w-96 text-lg">A nossa equipe irá auxiliar o seu pagamento.</p>
-              <Button size="lg">Contact us</Button>
+          <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-2">
+              <h2 className="text-bold text-bold text-6xl">
+                <span className="text-blue-400">{Math.ceil(handleCalculateCrecys())}</span> cRECYs
+              </h2>
+              <span className="text-base">per month</span>
             </div>
-          )}
-
-          {!needContact && (
-            <div className="flex flex-col gap-4">
-              <div className="flex flex-col gap-2">
-                <h2 className="text-bold text-bold text-6xl">
-                  <span className="text-blue-400">{Math.ceil(handleCalculateCrecys())}</span> cRECYs
-                </h2>
-                <span className="text-base">per month</span>
-              </div>
-            </div>
-          )}
+          </div>
         </div>
       </section>
 
@@ -102,7 +93,7 @@ export default function CalculatorResultScreen() {
                   name="wallet_address"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="">
+                      <FormLabel className="text-gray-600">
                         You have a metamask, Trust Wallet or Valora wallet? If so, what is the
                         public address?
                       </FormLabel>
@@ -123,7 +114,7 @@ export default function CalculatorResultScreen() {
                   name="terms_and_conditions"
                   render={({ field }) => (
                     <FormItem className="flex flex-col justify-center gap-2 align-middle">
-                      <FormLabel>
+                      <FormLabel className="text-gray-600">
                         After payment, you have 15 days to provide a wallet public address per email
                         otherwise it will be considered the user wants to donate the locked assets
                         back to sustainable waste treatment projects.
