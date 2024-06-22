@@ -14,23 +14,19 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 
-const checkoutFormValue = z.object({
-  email: z
-    .string({
-      required_error: 'Please accept the terms and conditions.',
-    })
-    .email(),
+const contactFormValue = z.object({
+  email: z.string().email(),
 });
 
-type CheckoutFormValues = z.infer<typeof checkoutFormValue>;
+type ContactFormValues = z.infer<typeof contactFormValue>;
 
 export const ResultContact = () => {
-  const form = useForm<CheckoutFormValues>({
+  const form = useForm<ContactFormValues>({
     mode: 'onChange',
-    resolver: zodResolver(checkoutFormValue),
+    resolver: zodResolver(contactFormValue),
   });
 
-  function onSubmit(data: CheckoutFormValues) {
+  function onSubmit(data: ContactFormValues) {
     console.log(data);
   }
 
@@ -60,7 +56,6 @@ export const ResultContact = () => {
                       </FormControl>
                       <FormMessage />
                     </FormItem>
-                    <FormMessage />
                   </FormItem>
                 )}
               />
