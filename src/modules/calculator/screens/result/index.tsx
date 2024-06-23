@@ -133,7 +133,14 @@ export default function CalculatorResultScreen() {
               </form>
             </Form>
 
-            <Button size="lg" type="submit" disabled={!form.watch().terms_and_conditions}>
+            <Button
+              size="lg"
+              type="submit"
+              disabled={!form.watch().terms_and_conditions}
+              onClick={() =>
+                (window.location.href = 'https://buy.stripe.com/test_9AQ3cndg51xB2YM7ss')
+              }
+            >
               Clean World
             </Button>
           </CardContent>
