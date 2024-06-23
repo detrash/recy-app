@@ -25,7 +25,7 @@ export default function CalculatorScreen() {
 
           <div>
             <Button size="lg" onClick={handleAcquireCertificate}>
-              Acquire Recy Certificate
+              Acquire Your Recy Certificate
             </Button>
           </div>
         </div>

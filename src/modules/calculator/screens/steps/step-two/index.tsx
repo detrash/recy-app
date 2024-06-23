@@ -99,7 +99,7 @@ export const CalculatorStepTwo = () => {
           form="calculator-form"
           disabled={!canForwardButton}
         >
-          Avançar
+          Advance
         </Button>
       </footer>
     </Form>
