@@ -79,7 +79,7 @@ export default function CalculatorResultScreen() {
       <div className="container mx-auto my-6 flex max-w-2xl flex-col gap-6">
         <Card className="sm:rounded-xl sm:shadow-xl">
           <CardHeader className="flex flex-row items-center gap-4 pb-2">
-            <h2 className="text-lg lg:text-2xl">Help to clean world!</h2>
+            <h2 className="text-lg lg:text-2xl">One step from cleaning the world with Recy!</h2>
           </CardHeader>
           <CardContent className="flex flex-col gap-4">
             <Form {...form}>
@@ -94,8 +94,9 @@ export default function CalculatorResultScreen() {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-gray-600">
-                        You have a metamask, Trust Wallet or Valora wallet? If so, what is the
-                        public address?
+                        Please provide us with your business digital wallet public address to
+                        receive our digital assets. (Preferably Valora Wallet, Metamask or Trust
+                        Wallet)
                       </FormLabel>
                       <FormItem>
                         <FormLabel>Wallet Address</FormLabel>
