@@ -3,10 +3,10 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Header } from './components/ui/layouts/header';
 import { HeaderSimple } from './components/ui/layouts/header-simple';
 import CalculatorResultScreen from './modules/calculator/screens/result';
-import KYC from './pages/kyc-test';
 import Calculator from './routes/calculator';
 import CalculatorStepsScreen from './routes/calculator/steps';
 import Dashboard from './routes/dashboard';
+import KYC from './routes/kyc-test';
 import Onboarding from './routes/onboarding';
 import Profile from './routes/profile';
 import Root from './routes/root';
@@ -44,6 +44,10 @@ const router = createBrowserRouter([
         ],
         path: '/settings',
       },
+      {
+        element: <KYC />,
+        path: '/kyc',
+      },
     ],
     element: <Header />,
   },
@@ -67,10 +71,6 @@ const router = createBrowserRouter([
   {
     element: <Root />,
     path: '/',
-  },
-  {
-    element: <KYC />,
-    path: '/kyc',
   },
 ]);
 
