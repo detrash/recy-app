@@ -8,7 +8,6 @@ export const api = axios.create({
 
 api.interceptors.request.use(async (config) => {
   if (config.fetchOptions?.auth0) {
-    console.log(`Assingin auth0 token`);
     const auth0 = config.fetchOptions.auth0 as Auth0ContextInterface;
 
     const { id_token: idToken } = await auth0.getAccessTokenSilently({ detailedResponse: true });

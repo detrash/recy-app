@@ -4,7 +4,6 @@ import SumsubWebSdk from '@sumsub/websdk-react';
 import { getSDKAccessToken } from '@/api';
 
 function KYC(props: WithAuth0Props) {
-  console.log(props);
   return (
     <>
       <SumsubWebSdk
