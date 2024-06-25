@@ -1,5 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
+import '@/locales/config';
+
 import { Header } from './components/ui/layouts/header';
 import { HeaderSimple } from './components/ui/layouts/header-simple';
 import CalculatorResultScreen from './modules/calculator/screens/result';

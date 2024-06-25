@@ -5,8 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 
 export default function CalculatorScreen() {
-  useTranslation();
-
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   const handleAcquireCertificate = () => {
@@ -17,15 +16,11 @@ export default function CalculatorScreen() {
     <>
       <section className="flex justify-center bg-[url('/assets/bg/ocean-dark.jpg')] bg-cover bg-center p-6 text-center text-white">
         <div className="border-md flex flex-col gap-4 p-2">
-          <p className="max-w-96 text-lg">
-            Recy Certificate is the best way for your business to contribute for overcoming waste
-            pollution and support recycling and composting. See how much cRECY savings you can build
-            to earn your Recy Certificate.
-          </p>
+          <p className="max-w-96 text-lg">{t('calculator:home_hero')}</p>
 
           <div>
             <Button size="lg" onClick={handleAcquireCertificate}>
-              Acquire Your Recy Certificate
+              {t('calculator:home_cta')}
             </Button>
           </div>
         </div>

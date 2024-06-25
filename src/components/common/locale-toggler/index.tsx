@@ -31,16 +31,17 @@ const locales = [
 ];
 
 export default function LocaleToggler() {
-  // const changeLocale = useChangeLocale({ preserveSearchParams: true });
-  // const currentLocale = useCurrentLocale();
-
   const { t, i18n } = useTranslation();
 
   console.log('t', t);
   console.log('i18n', i18n);
 
   // TODO: remove
-  const currentLocale = 'en';
+  const currentLocale = i18n.language;
+
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng);
+  };
 
   return (
     <DropdownMenu>
@@ -54,7 +55,7 @@ export default function LocaleToggler() {
         {locales.map((locale) => (
           <DropdownMenuItem
             key={locale.value}
-            onClick={() => i18n.changeLanguage(locale.value)}
+            onClick={() => changeLanguage(locale.value)}
             disabled={locale.value === currentLocale}
           >
             <span className="cursor-pointer">

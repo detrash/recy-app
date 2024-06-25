@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom/client';
 
 import { Toaster } from '@/components/ui/toaster';
 
-import './locales/config';
-
 import { Providers } from './components/providers';
 import { App } from './app';
 

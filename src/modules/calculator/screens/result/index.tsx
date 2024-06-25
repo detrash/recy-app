@@ -39,6 +39,7 @@ export default function CalculatorResultScreen() {
     inputs.company_type === 'product' ||
     (inputs.employees_quantity && inputs.employees_quantity >= 100);
 
+  // Employees number x 1.5kgs x 30 = waste footprint in kgs
   const wasteFootprint = inputs.employees_quantity && inputs.employees_quantity * 1.5 * 30;
 
   const handleCalculateCrecys = () => {
@@ -46,10 +47,12 @@ export default function CalculatorResultScreen() {
       return 0;
     }
 
+    // Up to 4k kgs a month = charges 10 cRECYs per month
     if (wasteFootprint <= 4000) {
       return 10;
     }
 
+    // Above 4k kgs a month = charges 1% in cRECYs a month.
     return wasteFootprint * 0.01;
   };
 
@@ -57,6 +60,7 @@ export default function CalculatorResultScreen() {
     console.log(data);
   }
 
+  // Above > 100 employees or product result contact
   if (needContact) {
     return <ResultContact />;
   }
@@ -137,7 +141,7 @@ export default function CalculatorResultScreen() {
             <Button
               size="lg"
               type="submit"
-              disabled={!form.watch().terms_and_conditions}
+              disabled={!form.watch().terms_and_conditions || wasteFootprint === 0}
               onClick={() =>
                 (window.location.href = 'https://buy.stripe.com/test_9AQ3cndg51xB2YM7ss')
               }
