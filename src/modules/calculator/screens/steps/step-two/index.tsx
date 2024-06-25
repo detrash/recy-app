@@ -68,7 +68,7 @@ export const CalculatorStepTwo = () => {
       >
         <section className="mb-3 sm:m-0">
           <h2 className="mb-1 text-2xl font-bold leading-relaxed text-gray-800 antialiased sm:text-3xl">
-            How many employees does the company have?
+            How many employees does your company have?
           </h2>
         </section>
 
@@ -99,7 +99,7 @@ export const CalculatorStepTwo = () => {
           form="calculator-form"
           disabled={!canForwardButton}
         >
-          Avançar
+          Advance
         </Button>
       </footer>
     </Form>

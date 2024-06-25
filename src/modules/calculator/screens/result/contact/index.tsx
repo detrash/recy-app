@@ -34,7 +34,7 @@ export const ResultContact = () => {
     <div className="container mx-auto my-6 flex max-w-2xl flex-col gap-6">
       <Card className="sm:rounded-xl sm:shadow-xl">
         <CardHeader className="flex flex-row items-center gap-4 pb-2">
-          <h2 className="text-lg lg:text-2xl">Our team will help about the payment.</h2>
+          <h2 className="text-lg lg:text-2xl">Our team will help you with the next steps.</h2>
         </CardHeader>
         <CardContent className="flex flex-col gap-4">
           <Form {...form}>
@@ -48,7 +48,10 @@ export const ResultContact = () => {
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-gray-600">Will send a message</FormLabel>
+                    <FormLabel className="text-gray-600">
+                      Write your preferred email address and our business developer will get in
+                      touch with you.
+                    </FormLabel>
                     <FormItem>
                       <FormLabel>Email</FormLabel>
                       <FormControl>
@@ -63,7 +66,7 @@ export const ResultContact = () => {
           </Form>
 
           <Button size="lg" type="submit">
-            Receive Message
+            I want a personalized support
           </Button>
         </CardContent>
       </Card>

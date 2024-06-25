@@ -70,7 +70,7 @@ export const CalculatorStepOne = () => {
       >
         <section className="mb-3 sm:m-0">
           <h2 className="mb-1 text-2xl font-bold leading-relaxed text-gray-800 antialiased sm:text-3xl">
-            It is a product or a service company?
+            Your business sells a service or a product?
           </h2>
         </section>
 
@@ -109,7 +109,7 @@ export const CalculatorStepOne = () => {
           form="calculator-form"
           disabled={!canForwardButton}
         >
-          Avançar
+          Advance
         </Button>
       </footer>
     </Form>
