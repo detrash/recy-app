@@ -31,12 +31,8 @@ const locales = [
 ];
 
 export default function LocaleToggler() {
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
 
-  console.log('t', t);
-  console.log('i18n', i18n);
-
-  // TODO: remove
   const currentLocale = i18n.language;
 
   const changeLanguage = (lng: string) => {
