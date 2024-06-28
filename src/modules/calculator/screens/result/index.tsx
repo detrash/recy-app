@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form';
+import { Navigate } from 'react-router-dom';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 
@@ -16,16 +17,17 @@ import {
 import { Input } from '@/components/ui/input';
 import { useCalculatorStore } from '@/stores/use-calculator';
 
-import { ResultContact } from './contact';
-
 const checkoutFormValue = z.object({
   terms_and_conditions: z.boolean({
     required_error: 'Please accept the terms and conditions.',
   }),
-  wallet_address: z.string(),
+  wallet_address: z.string().optional(),
 });
 
 type CheckoutFormValues = z.infer<typeof checkoutFormValue>;
+
+// Above 4k kgs a month is considered a big waste footprint
+const BIG_WASTE_FOOTPRINT = 4000;
 
 export default function CalculatorResultScreen() {
   const { inputs } = useCalculatorStore();
@@ -35,12 +37,13 @@ export default function CalculatorResultScreen() {
     resolver: zodResolver(checkoutFormValue),
   });
 
-  const needContact =
-    inputs.company_type === 'product' ||
-    (inputs.employees_quantity && inputs.employees_quantity >= 100);
-
   // Employees number x 1.5kgs x 30 = waste footprint in kgs
   const wasteFootprint = inputs.employees_quantity && inputs.employees_quantity * 1.5 * 30;
+
+  const needPersonalizedSupport =
+    inputs.company_type === 'product' ||
+    (inputs.employees_quantity && inputs.employees_quantity >= 100) ||
+    (wasteFootprint && wasteFootprint >= BIG_WASTE_FOOTPRINT);
 
   const handleCalculateCrecys = () => {
     if (!wasteFootprint) {
@@ -48,7 +51,7 @@ export default function CalculatorResultScreen() {
     }
 
     // Up to 4k kgs a month = charges 10 cRECYs per month
-    if (wasteFootprint <= 4000) {
+    if (wasteFootprint <= BIG_WASTE_FOOTPRINT) {
       return 10;
     }
 
@@ -58,16 +61,26 @@ export default function CalculatorResultScreen() {
 
   function onSubmit(data: CheckoutFormValues) {
     console.log(data);
+
+    window.location.href = 'https://buy.stripe.com/test_9AQ3cndg51xB2YM7ss';
   }
 
-  // Above > 100 employees or product result contact
-  if (needContact) {
-    return <ResultContact />;
+  // Above > 100 employees or product redirect to contact
+  if (needPersonalizedSupport) {
+    return (
+      <Navigate
+        to={`/calculator/contact?company_type=${inputs.company_type}&employees_quantity=${inputs.employees_quantity}&waste_foot_print=${wasteFootprint}`}
+      />
+    );
+  }
+
+  if (wasteFootprint === 0) {
+    return <Navigate to="/calculator" />;
   }
 
   return (
     <>
-      <section className="bg- bg-[positon: '100%'] ext-white bg- flex justify-center bg-[url('/assets/bg/ocean-dark.jpg')] bg-cover bg-center p-6 text-center text-white">
+      <section className="bg-[positon: '100%'] ext-white bg- flex justify-center bg-blue-500 bg-[url('/assets/bg/ocean-dark.jpg')] bg-cover bg-center p-6 text-center text-white">
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-2">
@@ -87,11 +100,7 @@ export default function CalculatorResultScreen() {
           </CardHeader>
           <CardContent className="flex flex-col gap-4">
             <Form {...form}>
-              <form
-                className="flex flex-1 flex-col gap-4"
-                onSubmit={form.handleSubmit(onSubmit)}
-                id="calculator-form"
-              >
+              <form className="flex flex-1 flex-col gap-4" onSubmit={form.handleSubmit(onSubmit)}>
                 <FormField
                   control={form.control}
                   name="wallet_address"
@@ -107,7 +116,6 @@ export default function CalculatorResultScreen() {
                         <FormControl>
                           <Input {...field} />
                         </FormControl>
-                        <FormMessage />
                       </FormItem>
                       <FormMessage />
                     </FormItem>
@@ -132,22 +140,17 @@ export default function CalculatorResultScreen() {
 
                         <FormLabel>Accept terms and conditions</FormLabel>
                       </div>
+
+                      <FormMessage />
                     </FormItem>
                   )}
                 />
+
+                <Button size="lg" type="submit" disabled={!form.watch().terms_and_conditions}>
+                  Clean World
+                </Button>
               </form>
             </Form>
-
-            <Button
-              size="lg"
-              type="submit"
-              disabled={!form.watch().terms_and_conditions || wasteFootprint === 0}
-              onClick={() =>
-                (window.location.href = 'https://buy.stripe.com/test_9AQ3cndg51xB2YM7ss')
-              }
-            >
-              Clean World
-            </Button>
           </CardContent>
         </Card>
       </div>

@@ -20,7 +20,7 @@ const contactFormValue = z.object({
 
 type ContactFormValues = z.infer<typeof contactFormValue>;
 
-export const ResultContact = () => {
+export const CalculatorContactScreen = () => {
   const form = useForm<ContactFormValues>({
     mode: 'onChange',
     resolver: zodResolver(contactFormValue),
