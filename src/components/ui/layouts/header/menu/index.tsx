@@ -70,6 +70,13 @@ export const Menu = () => {
             <Icon icon="ic:sharp-admin-panel-settings" width="16" height="16" className="ml-1" />
           </Link>
         </NavigationMenuItem>
+
+        <NavigationMenuItem>
+          <Link className={navigationMenuTriggerStyle()} to={LINKS.KYC}>
+            KYC
+            <Icon icon="ic:sharp-admin-panel-settings" width="16" height="16" className="ml-1" />
+          </Link>
+        </NavigationMenuItem>
       </NavigationMenuList>
 
       <NavigationMenuList>

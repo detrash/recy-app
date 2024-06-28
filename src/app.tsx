@@ -8,6 +8,7 @@ import CalculatorResultScreen from './modules/calculator/screens/result';
 import Calculator from './routes/calculator';
 import CalculatorStepsScreen from './routes/calculator/steps';
 import Dashboard from './routes/dashboard';
+import KYC from './routes/kyc-test';
 import Onboarding from './routes/onboarding';
 import Profile from './routes/profile';
 import Root from './routes/root';
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
           },
         ],
         path: '/settings',
+      },
+      {
+        element: <KYC />,
+        path: '/kyc',
       },
     ],
     element: <Header />,
