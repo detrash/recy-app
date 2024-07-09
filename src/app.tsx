@@ -1,11 +1,15 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
+import '@/locales/config';
+
 import { Header } from './components/ui/layouts/header';
 import { HeaderSimple } from './components/ui/layouts/header-simple';
+import { CalculatorContactScreen } from './modules/calculator/screens/contact';
 import CalculatorResultScreen from './modules/calculator/screens/result';
 import Calculator from './routes/calculator';
 import CalculatorStepsScreen from './routes/calculator/steps';
 import Dashboard from './routes/dashboard';
+import KYC from './routes/kyc-test';
 import Onboarding from './routes/onboarding';
 import Profile from './routes/profile';
 import Root from './routes/root';
@@ -43,11 +47,19 @@ const router = createBrowserRouter([
         ],
         path: '/settings',
       },
+      {
+        element: <KYC />,
+        path: '/kyc',
+      },
     ],
     element: <Header />,
   },
   {
     children: [
+      {
+        element: <CalculatorContactScreen />,
+        path: '/calculator/contact',
+      },
       {
         element: <CalculatorStepsScreen />,
         path: '/calculator/steps',

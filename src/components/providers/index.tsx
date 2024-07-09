@@ -1,6 +1,7 @@
-import { PropsWithChildren } from "react";
-import { Web3ModalProvider } from "./web3-modal-provider";
-import { AuthProvider } from "./auth-provider";
+import { PropsWithChildren } from 'react';
+
+import { AuthProvider } from './auth-provider';
+import { Web3ModalProvider } from './web3-modal-provider';
 
 export function Providers({ children }: PropsWithChildren) {
   return (
