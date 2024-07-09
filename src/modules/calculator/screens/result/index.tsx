@@ -25,7 +25,6 @@ const checkoutFormValue = z.object({
 });
 
 type CheckoutFormValues = z.infer<typeof checkoutFormValue>;
-
 // Above 4k kgs a month is considered a big waste footprint
 const BIG_WASTE_FOOTPRINT = 4000;
 
@@ -65,7 +64,7 @@ export default function CalculatorResultScreen() {
     window.location.href = 'https://buy.stripe.com/test_9AQ3cndg51xB2YM7ss';
   }
 
-  // Above > 100 employees or product redirect to contact
+  // Above > 100 employees or product company redirect to contact page
   if (needPersonalizedSupport) {
     return (
       <Navigate
