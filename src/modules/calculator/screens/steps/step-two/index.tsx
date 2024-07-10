@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ArrowLeft } from 'lucide-react';
@@ -26,6 +27,8 @@ type CalculatorStepTwoFormValues = z.infer<typeof calculatorStepTwoFormSchema>;
 
 export const CalculatorStepTwo = () => {
   const { setInputs, inputs, currentStep, setPreviousStep } = useCalculatorStore();
+
+  const { t } = useTranslation();
 
   const navigate = useNavigate();
 
@@ -68,7 +71,7 @@ export const CalculatorStepTwo = () => {
       >
         <section className="mb-3 sm:m-0">
           <h2 className="mb-1 text-2xl font-bold leading-relaxed text-gray-800 antialiased sm:text-3xl">
-            How many employees does your company have?
+            {t('calculator.steps.two.title')}
           </h2>
         </section>
 
@@ -78,7 +81,7 @@ export const CalculatorStepTwo = () => {
             name="employees_quantity"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Employees Quantity</FormLabel>
+                <FormLabel>{t('calculator.steps.two.label')}</FormLabel>
                 <FormControl>
                   <Input {...field} />
                 </FormControl>
@@ -99,7 +102,7 @@ export const CalculatorStepTwo = () => {
           form="calculator-form"
           disabled={!canForwardButton}
         >
-          Advance
+          {t('calculator.steps.button')}
         </Button>
       </footer>
     </Form>

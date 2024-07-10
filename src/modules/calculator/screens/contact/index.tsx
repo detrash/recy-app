@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 
@@ -21,6 +22,7 @@ const contactFormValue = z.object({
 type ContactFormValues = z.infer<typeof contactFormValue>;
 
 export const CalculatorContactScreen = () => {
+  const { t } = useTranslation();
   const form = useForm<ContactFormValues>({
     mode: 'onChange',
     resolver: zodResolver(contactFormValue),
@@ -34,7 +36,7 @@ export const CalculatorContactScreen = () => {
     <div className="container mx-auto my-6 flex max-w-2xl flex-col gap-6">
       <Card className="sm:rounded-xl sm:shadow-xl">
         <CardHeader className="flex flex-row items-center gap-4 pb-2">
-          <h2 className="text-lg lg:text-2xl">Our team will help you with the next steps.</h2>
+          <h2 className="text-lg lg:text-2xl">{t('calculator.contact.title')}</h2>
         </CardHeader>
         <CardContent className="flex flex-col gap-4">
           <Form {...form}>
@@ -48,10 +50,7 @@ export const CalculatorContactScreen = () => {
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-gray-600">
-                      Write your preferred email address and our business developer will get in
-                      touch with you.
-                    </FormLabel>
+                    <FormLabel className="text-gray-600">{t('calculator.contact.label')}</FormLabel>
                     <FormItem>
                       <FormLabel>Email</FormLabel>
                       <FormControl>
@@ -66,7 +65,7 @@ export const CalculatorContactScreen = () => {
           </Form>
 
           <Button size="lg" type="submit">
-            I want a personalized support
+            {t('calculator.contact.button')}
           </Button>
         </CardContent>
       </Card>
