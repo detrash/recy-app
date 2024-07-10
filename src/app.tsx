@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import '@/locales/config';
+import '@/config/i18next';
 
 import { Header } from './components/ui/layouts/header';
 import { HeaderSimple } from './components/ui/layouts/header-simple';
