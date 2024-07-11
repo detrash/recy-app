@@ -32,7 +32,7 @@ const BIG_WASTE_FOOTPRINT = 4000;
 export default function CalculatorResultScreen() {
   const { inputs } = useCalculatorStore();
 
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const form = useForm<CheckoutFormValues>({
     mode: 'onChange',
@@ -61,10 +61,11 @@ export default function CalculatorResultScreen() {
     return wasteFootprint * 0.01;
   };
 
-  function onSubmit(data: CheckoutFormValues) {
-    console.log(data);
+  function onSubmit() {
+    const BASE_URL = import.meta.env.VITE_BUY_STRIPE_URL;
+    const PAYMENT_REDIRECT_URL = `${BASE_URL}?locale=${i18n.language}`;
 
-    window.location.href = import.meta.env.VITE_BUY_STRIPE_URL;
+    window.location.href = String(PAYMENT_REDIRECT_URL);
   }
 
   // Above > 100 employees or product company redirect to contact page
@@ -141,7 +142,7 @@ export default function CalculatorResultScreen() {
                 />
 
                 <Button size="lg" type="submit" disabled={!form.watch().terms_and_conditions}>
-                  Clean World
+                  {t('calculator.result.button')}
                 </Button>
               </form>
             </Form>

@@ -110,6 +110,7 @@ export const CalculatorStepOne = () => {
         <Button variant="outline" size="icon" onClick={handleBackNavigate}>
           <ArrowLeft />
         </Button>
+
         <Button
           className="w-full"
           type="submit"
