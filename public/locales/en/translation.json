@@ -44,7 +44,8 @@
         "text": "After payment, you have 15 days to provide a wallet public address per email otherwise it will be considered the user wants to donate the locked assets back to sustainable waste treatment projects.",
         "label": "Accept terms and conditions"
       },
-      "button": "Clean World"
+      "button": "Clean World",
+      "wasteFootPrint": "Your waste footprint is approximately"
     },
     "contact": {
       "title": "Our team will help you with the next steps.",

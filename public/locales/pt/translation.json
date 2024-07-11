@@ -45,7 +45,8 @@
         "text": "Após o pagamento, você tem 15 dias para fornecer um endereço público de carteira por e-mail, caso contrário será considerado que o usuário deseja doar os ativos bloqueados de volta para projetos sustentáveis ​​de tratamento de resíduos.",
         "label": "Aceitar termos e Condições"
       },
-      "button": "Mundo Limpo"
+      "button": "Mundo Limpo",
+      "wasteFootPrint": "A sua pegada de resíduos é de aproximadamente"
     },
     "contact": {
       "title": "Nossa equipe te ajudará com os próximos passos.",
