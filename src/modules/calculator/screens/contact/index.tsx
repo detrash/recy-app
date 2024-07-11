@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 
+import { api } from '@/api/axios';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import {
@@ -31,26 +32,14 @@ export const CalculatorContactScreen = () => {
   });
 
   async function onSubmit(data: ContactFormValues) {
-    console.log(data);
     try {
-      const response = await fetch(
-        'https:/detrash-recy-api-git-main-de-trash.vercel.app/api/send/support',
-        {
-          body: JSON.stringify({ email: data.email }),
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          method: 'POST',
-        },
-      );
+      const response = await api.post('/send/support', { email: data.email });
 
-      if (!response.ok) {
-        const data = await response.json();
-
-        throw new Error(data.error.message);
+      if (!response.data.sucess) {
+        throw new Error(response.data.error.message);
       }
 
-      if (response.ok) {
+      if (response.data.sucess) {
         toast({
           title: 'We will do our best to respond to you as soon as possible.',
         });
