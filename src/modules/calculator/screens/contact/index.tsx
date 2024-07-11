@@ -14,6 +14,7 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { useToast } from '@/components/ui/use-toast';
 
 const contactFormValue = z.object({
   email: z.string().email(),
@@ -22,14 +23,46 @@ const contactFormValue = z.object({
 type ContactFormValues = z.infer<typeof contactFormValue>;
 
 export const CalculatorContactScreen = () => {
+  const { toast } = useToast();
   const { t } = useTranslation();
   const form = useForm<ContactFormValues>({
     mode: 'onChange',
     resolver: zodResolver(contactFormValue),
   });
 
-  function onSubmit(data: ContactFormValues) {
+  async function onSubmit(data: ContactFormValues) {
     console.log(data);
+    try {
+      const response = await fetch(
+        'https:/detrash-recy-api-git-main-de-trash.vercel.app/api/send/support',
+        {
+          body: JSON.stringify(data.email),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          method: 'POST',
+        },
+      );
+
+      if (!response.ok) {
+        const data = await response.json();
+
+        throw new Error(data.error.message);
+      }
+
+      if (response.ok) {
+        toast({
+          title: 'We will do our best to respond to you as soon as possible.',
+        });
+      }
+    } catch (error) {
+      if (error instanceof Error) {
+        toast({
+          title: error.message,
+          variant: 'destructive',
+        });
+      }
+    }
   }
 
   return (
@@ -61,12 +94,12 @@ export const CalculatorContactScreen = () => {
                   </FormItem>
                 )}
               />
+
+              <Button size="lg" type="submit">
+                {t('calculator.contact.button')}
+              </Button>
             </form>
           </Form>
-
-          <Button size="lg" type="submit">
-            {t('calculator.contact.button')}
-          </Button>
         </CardContent>
       </Card>
     </div>
