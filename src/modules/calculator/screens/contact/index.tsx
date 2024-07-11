@@ -36,7 +36,7 @@ export const CalculatorContactScreen = () => {
       const response = await fetch(
         'https:/detrash-recy-api-git-main-de-trash.vercel.app/api/send/support',
         {
-          body: JSON.stringify(data.email),
+          body: JSON.stringify({ email: data.email }),
           headers: {
             'Content-Type': 'application/json',
           },
