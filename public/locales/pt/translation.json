@@ -46,7 +46,10 @@
         "label": "Aceitar termos e Condições"
       },
       "button": "Mundo Limpo",
-      "wasteFootPrint": "A sua pegada de resíduos é de aproximadamente"
+      "hero": {
+        "title": "Sua pegada de resíduos é de aproximadamente {{ wasteFootprint }} por mês.",
+        "text": "adquirido mensalmente para obter seu certificado."
+      }
     },
     "contact": {
       "title": "Nossa equipe te ajudará com os próximos passos.",

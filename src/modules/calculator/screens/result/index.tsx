@@ -95,7 +95,7 @@ export default function CalculatorResultScreen() {
               <h1 className="text-bold text-bold text-6xl">
                 <span className="text-blue-400">{Math.ceil(handleCalculateCrecys())}</span> cRECYs
               </h1>
-              <span className="text-base">acquired monthly to get your certificate.</span>
+              <span className="text-base">{t('calculator.result.hero.text')}</span>
             </div>
           </div>
         </div>

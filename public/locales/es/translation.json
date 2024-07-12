@@ -45,7 +45,10 @@
         "label": "Aceptar términos y condiciones."
       },
       "button": "Mundo limpio",
-      "wasteFootPrint": "Su huella de residuos es de aproximadamente"
+      "hero": {
+        "title": "Su huella de residuos es de aproximadamente {{ WasteFootprint }} por mes.",
+        "text": "adquirido mensualmente para obtener su certificado."
+      }
     },
     "contact": {
       "title": "Nuestro equipo te ayudara con los próximos pasos.",
