@@ -87,14 +87,15 @@ export default function CalculatorResultScreen() {
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-2">
-              <h1 className="text-bold text-6xl">
+              <h2 className="text-bold text-bold text-xl">
+                {t('calculator.result.hero.title', {
+                  wasteFootprint,
+                })}
+              </h2>
+              <h1 className="text-bold text-bold text-6xl">
                 <span className="text-blue-400">{Math.ceil(handleCalculateCrecys())}</span> cRECYs
               </h1>
-              <h2 className="text-bold text-xl">
-                {t('calculator.result.wasteFootPrint')}{' '}
-                <span className="text-blue-400">{wasteFootprint}</span> Kg.
-              </h2>
-              <span className="text-base">per month</span>
+              <span className="text-base">acquired monthly to get your certificate.</span>
             </div>
           </div>
         </div>
