@@ -1,9 +1,10 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
+import { HeaderSimple } from '@/modules/calculator/components/header';
+
 import '@/config/i18next';
 
 import { Header } from './components/ui/layouts/header';
-import { HeaderSimple } from './components/ui/layouts/header-simple';
 import { CalculatorContactScreen } from './modules/calculator/screens/contact';
 import CalculatorResultScreen from './modules/calculator/screens/result';
 import Calculator from './routes/calculator';

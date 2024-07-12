@@ -87,10 +87,15 @@ export default function CalculatorResultScreen() {
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-2">
-              <h2 className="text-bold text-bold text-6xl">
-                <span className="text-blue-400">{Math.ceil(handleCalculateCrecys())}</span> cRECYs
+              <h2 className="text-bold text-bold text-xl">
+                {t('calculator.result.hero.title', {
+                  wasteFootprint,
+                })}
               </h2>
-              <span className="text-base">per month</span>
+              <h1 className="text-bold text-bold text-6xl">
+                <span className="text-blue-400">{Math.ceil(handleCalculateCrecys())}</span> cRECYs
+              </h1>
+              <span className="text-base">{t('calculator.result.hero.text')}</span>
             </div>
           </div>
         </div>

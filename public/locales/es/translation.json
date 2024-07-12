@@ -44,7 +44,11 @@
         "text": "Después del pago, tienes 15 días para proporcionar una dirreción pública de la billetera por correo electrónico, de lo contrario, se considerará que el usuario desea donar los activos bloqueados a proyectos de tratamiento de residuos sostenibles.",
         "label": "Aceptar términos y condiciones."
       },
-      "button": "Mundo limpio"
+      "button": "Mundo limpio",
+      "hero": {
+        "title": "Su huella de residuos es de aproximadamente {{ WasteFootprint }} por mes.",
+        "text": "adquirido mensualmente para obtener su certificado."
+      }
     },
     "contact": {
       "title": "Nuestro equipo te ayudara con los próximos pasos.",
