@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { Navigate } from 'react-router-dom';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -31,6 +32,8 @@ const BIG_WASTE_FOOTPRINT = 4000;
 export default function CalculatorResultScreen() {
   const { inputs } = useCalculatorStore();
 
+  const { t, i18n } = useTranslation();
+
   const form = useForm<CheckoutFormValues>({
     mode: 'onChange',
     resolver: zodResolver(checkoutFormValue),
@@ -58,10 +61,11 @@ export default function CalculatorResultScreen() {
     return wasteFootprint * 0.01;
   };
 
-  function onSubmit(data: CheckoutFormValues) {
-    console.log(data);
+  function onSubmit() {
+    const BASE_URL = import.meta.env.VITE_BUY_STRIPE_URL;
+    const PAYMENT_REDIRECT_URL = `${BASE_URL}?locale=${i18n.language}`;
 
-    window.location.href = 'https://buy.stripe.com/test_9AQ3cndg51xB2YM7ss';
+    window.location.href = String(PAYMENT_REDIRECT_URL);
   }
 
   // Above > 100 employees or product company redirect to contact page
@@ -83,10 +87,15 @@ export default function CalculatorResultScreen() {
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-2">
-              <h2 className="text-bold text-bold text-6xl">
-                <span className="text-blue-400">{Math.ceil(handleCalculateCrecys())}</span> cRECYs
+              <h2 className="text-bold text-bold text-xl">
+                {t('calculator.result.hero.title', {
+                  wasteFootprint,
+                })}
               </h2>
-              <span className="text-base">per month</span>
+              <h1 className="text-bold text-bold text-6xl">
+                <span className="text-blue-400">{Math.ceil(handleCalculateCrecys())}</span> cRECYs
+              </h1>
+              <span className="text-base">{t('calculator.result.hero.text')}</span>
             </div>
           </div>
         </div>
@@ -95,7 +104,7 @@ export default function CalculatorResultScreen() {
       <div className="container mx-auto my-6 flex max-w-2xl flex-col gap-6">
         <Card className="sm:rounded-xl sm:shadow-xl">
           <CardHeader className="flex flex-row items-center gap-4 pb-2">
-            <h2 className="text-lg lg:text-2xl">One step from cleaning the world with Recy!</h2>
+            <h2 className="text-lg lg:text-2xl">{t('calculator.result.title')}</h2>
           </CardHeader>
           <CardContent className="flex flex-col gap-4">
             <Form {...form}>
@@ -105,13 +114,9 @@ export default function CalculatorResultScreen() {
                   name="wallet_address"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-gray-600">
-                        Please provide us with your business digital wallet public address to
-                        receive our digital assets. (Preferably Valora Wallet, Metamask or Trust
-                        Wallet)
-                      </FormLabel>
+                      <FormLabel className="text-gray-600">{t('calculator.result.text')}</FormLabel>
                       <FormItem>
-                        <FormLabel>Wallet Address</FormLabel>
+                        <FormLabel>{t('calculator.result.label')}</FormLabel>
                         <FormControl>
                           <Input {...field} />
                         </FormControl>
@@ -126,18 +131,14 @@ export default function CalculatorResultScreen() {
                   name="terms_and_conditions"
                   render={({ field }) => (
                     <FormItem className="flex flex-col justify-center gap-2 align-middle">
-                      <FormLabel className="text-gray-600">
-                        After payment, you have 15 days to provide a wallet public address per email
-                        otherwise it will be considered the user wants to donate the locked assets
-                        back to sustainable waste treatment projects.
-                      </FormLabel>
+                      <p className="text-sm text-gray-600">{t('calculator.result.terms.text')}</p>
 
                       <div className="flex justify-center gap-2 align-middle">
                         <FormControl>
                           <Checkbox checked={field.value} onCheckedChange={field.onChange} />
                         </FormControl>
 
-                        <FormLabel>Accept terms and conditions</FormLabel>
+                        <FormLabel>{t('calculator.result.terms.label')}</FormLabel>
                       </div>
 
                       <FormMessage />
@@ -146,7 +147,7 @@ export default function CalculatorResultScreen() {
                 />
 
                 <Button size="lg" type="submit" disabled={!form.watch().terms_and_conditions}>
-                  Clean World
+                  {t('calculator.result.button')}
                 </Button>
               </form>
             </Form>

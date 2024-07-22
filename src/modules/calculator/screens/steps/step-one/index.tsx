@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ArrowLeft } from 'lucide-react';
@@ -32,6 +33,8 @@ type CalculatorStepOneFormValues = z.infer<typeof calculatorStepOneFormSchema>;
 
 export const CalculatorStepOne = () => {
   const { setInputs, setNextStep, inputs, currentStep, setPreviousStep } = useCalculatorStore();
+
+  const { t } = useTranslation();
 
   const navigate = useNavigate();
 
@@ -70,7 +73,7 @@ export const CalculatorStepOne = () => {
       >
         <section className="mb-3 sm:m-0">
           <h2 className="mb-1 text-2xl font-bold leading-relaxed text-gray-800 antialiased sm:text-3xl">
-            Your business sells a service or a product?
+            {t('calculator.steps.one.title')}
           </h2>
         </section>
 
@@ -80,16 +83,20 @@ export const CalculatorStepOne = () => {
             name="company_type"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Company Type</FormLabel>
+                <FormLabel>{t('calculator.steps.one.label')}</FormLabel>
                 <Select onValueChange={field.onChange} defaultValue={field.value}>
                   <FormControl>
                     <SelectTrigger>
-                      <SelectValue placeholder="Select a option" />
+                      <SelectValue placeholder={t('calculator.steps.one.select.placeholder')} />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    <SelectItem value="product">Product</SelectItem>
-                    <SelectItem value="service">Service</SelectItem>
+                    <SelectItem value="product">
+                      {t('calculator.steps.one.select.options.product')}{' '}
+                    </SelectItem>
+                    <SelectItem value="service">
+                      {t('calculator.steps.one.select.options.service')}{' '}
+                    </SelectItem>
                   </SelectContent>
                 </Select>
                 <FormMessage />
@@ -103,13 +110,14 @@ export const CalculatorStepOne = () => {
         <Button variant="outline" size="icon" onClick={handleBackNavigate}>
           <ArrowLeft />
         </Button>
+
         <Button
           className="w-full"
           type="submit"
           form="calculator-form"
           disabled={!canForwardButton}
         >
-          Advance
+          {t('calculator.steps.button')}
         </Button>
       </footer>
     </Form>

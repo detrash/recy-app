@@ -24,7 +24,7 @@ const locales = [
     value: 'es',
   },
   {
-    icon: '🇵🇹',
+    icon: '🇧🇷',
     name: 'Português',
     value: 'pt',
   },
