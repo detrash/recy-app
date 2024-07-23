@@ -46,7 +46,7 @@
       },
       "button": "Clean World",
       "hero": {
-        "title": "Your waste footprint is approximately {{ wasteFootprint }} per month.",
+        "title": "Your waste footprint is approximately {{ wasteFootprint }} kg per month.",
         "text": "acquired monthly to get your certificate."
       }
     },
