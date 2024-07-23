@@ -5,29 +5,29 @@ import LocaleToggler from '@/components/common/locale-toggler';
 export const HeaderSimple = () => {
   return (
     <>
-      <header className="f sticky top-0 w-full border-b bg-white p-3">
+      <header className="f sticky top-0 w-full border-b bg-white py-3">
         <div className="container flex items-center justify-between gap-4">
-          <div className="flex items-center gap-4">
-            <a href="/calculator">
-              <img
-                src="/assets/brand/recy-certificate-logo.png"
-                alt="Recy Network"
-                width={72}
-                height={72}
-              />
-            </a>
-
+          <div className="w-14 flex justify-center items-center">
             <a href="https://site.recy.life">
               <img
-                src="/assets/brand/recy-network-logo.png"
+                src="/assets/brand/recy-logo.png"
                 alt="Recy Network"
-                width={132}
-                height={132}
               />
             </a>
           </div>
 
-          <LocaleToggler />
+          <div className="w-14 flex justify-center items-center">
+            <a href="/calculator">
+              <img
+                src="/assets/brand/recy-certificate-logo.png"
+                alt="Recy Network"
+              />
+            </a>
+          </div>
+
+          <div className="w-14 flex justify-center items-center">
+            <LocaleToggler />
+          </div>
         </div>
       </header>
       <Outlet />
