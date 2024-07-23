@@ -32,18 +32,21 @@ export const CalculatorContactScreen = () => {
   });
 
   async function onSubmit(data: ContactFormValues) {
+    const BASE_URL = import.meta.env.VITE_AWS_LAMBDA;
+    const ENVIRONMENT = import.meta.env.PROD ? 'production' : 'staging';
+    const ENDPOINT = `${BASE_URL}/${ENVIRONMENT}/user/support`;
+
     try {
-      const response = await api.post('/send/support', { email: data.email });
+      const response = await api.post(ENDPOINT, { email: data.email });
 
-      if (!response.data.sucess) {
-        throw new Error(response.data.error.message);
-      }
-
-      if (response.data.sucess) {
-        toast({
+      if (response.status === 200) {
+        return toast({
           title: 'We will do our best to respond to you as soon as possible.',
         });
       }
+
+      throw new Error(response.data.error.message);
+
     } catch (error) {
       if (error instanceof Error) {
         toast({
