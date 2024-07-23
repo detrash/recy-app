@@ -41,7 +41,7 @@ export const CalculatorContactScreen = () => {
 
       if (response.status === 200) {
         return toast({
-          title: 'We will do our best to respond to you as soon as possible.',
+          title: t('calculator.contact.success'),
         });
       }
 
