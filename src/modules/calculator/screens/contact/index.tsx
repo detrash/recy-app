@@ -34,7 +34,6 @@ export const CalculatorContactScreen = () => {
   async function onSubmit(data: ContactFormValues) {
     const BASE_URL = import.meta.env.VITE_AWS_LAMBDA;
     const ENVIRONMENT = import.meta.env.PROD ? 'production' : 'staging';
-
     const ENDPOINT = `${BASE_URL}/${ENVIRONMENT}/user/support`;
 
     try {
