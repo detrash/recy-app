@@ -46,7 +46,7 @@
       },
       "button": "Mundo limpio",
       "hero": {
-        "title": "Su huella de residuos es de aproximadamente {{ WasteFootprint }} por mes.",
+        "title": "Su huella de residuos es de aproximadamente {{ wasteFootprint }} kg por mes.",
         "text": "adquirido mensualmente para obtener su certificado."
       }
     },

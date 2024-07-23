@@ -47,7 +47,7 @@
       },
       "button": "Mundo Limpo",
       "hero": {
-        "title": "Sua pegada de resíduos é de aproximadamente {{ wasteFootprint }} por mês.",
+        "title": "Sua pegada de resíduos é de aproximadamente {{ wasteFootprint }} kg por mês.",
         "text": "adquirido mensalmente para obter seu certificado."
       }
     },
