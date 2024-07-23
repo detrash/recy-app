@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -30,19 +31,26 @@ export const CalculatorContactScreen = () => {
     mode: 'onChange',
     resolver: zodResolver(contactFormValue),
   });
+  const [isLoading, setIsLoading] = useState(false);
 
   async function onSubmit(data: ContactFormValues) {
+    setIsLoading(true);
+
     const BASE_URL = import.meta.env.VITE_AWS_LAMBDA;
     const ENVIRONMENT = import.meta.env.PROD ? 'production' : 'staging';
     const ENDPOINT = `${BASE_URL}/${ENVIRONMENT}/user/support`;
+  
 
     try {
       const response = await api.post(ENDPOINT, { email: data.email });
 
       if (response.status === 200) {
+        form.reset({ email: '' });
+
         return toast({
           title: 'We will do our best to respond to you as soon as possible.',
         });
+
       }
 
       throw new Error(response.data.error.message);
@@ -54,6 +62,8 @@ export const CalculatorContactScreen = () => {
           variant: 'destructive',
         });
       }
+    } finally {
+      setIsLoading(false);
     }
   }
 
@@ -88,7 +98,7 @@ export const CalculatorContactScreen = () => {
               />
 
               <Button size="lg" type="submit">
-                {t('calculator.contact.button')}
+                {isLoading ? '...' : t('calculator.contact.button')}
               </Button>
             </form>
           </Form>
