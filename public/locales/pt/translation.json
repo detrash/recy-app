@@ -54,7 +54,8 @@
     "contact": {
       "title": "Nossa equipe te ajudará com os próximos passos.",
       "button": "Quero suporte personalizado",
-      "label": "Escreva seu e-mail preferido e nosso especialista em desenvolvimento de negócios entrará em contato."
+      "label": "Escreva seu e-mail preferido e nosso especialista em desenvolvimento de negócios entrará em contato.",
+      "success": "Faremos o nosso melhor para lhe responder o mais breve possível."
     }
   }
 }

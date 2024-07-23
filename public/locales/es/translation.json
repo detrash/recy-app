@@ -53,7 +53,8 @@
     "contact": {
       "title": "Nuestro equipo te ayudara con los próximos pasos.",
       "button": "Quiero un soporte personalizado",
-      "label": "Escribe tu dirreción de correo electronica preferida y nuestro equipo se pondrá en contacto."
+      "label": "Escribe tu dirreción de correo electronica preferida y nuestro equipo se pondrá en contacto.",
+       "success": "Haremos todo lo posible para responderle lo antes posible."
     }
   }
 }
