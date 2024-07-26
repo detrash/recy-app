@@ -48,7 +48,7 @@ export const CalculatorContactScreen = () => {
         form.reset({ email: '' });
 
         return toast({
-          title: 'We will do our best to respond to you as soon as possible.',
+          title: t('calculator.contact.success'),
         });
 
       }

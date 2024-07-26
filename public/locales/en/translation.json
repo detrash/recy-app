@@ -46,14 +46,15 @@
       },
       "button": "Clean World",
       "hero": {
-        "title": "Your waste footprint is approximately {{ wasteFootprint }} per month.",
+        "title": "Your waste footprint is approximately {{ wasteFootprint }} kg per month.",
         "text": "acquired monthly to get your certificate."
       }
     },
     "contact": {
       "title": "Our team will help you with the next steps.",
       "button": "I want a personalized support",
-      "label": "Write your preferred email address and our business developer will get in touch with you."
+      "label": "Write your preferred email address and our business developer will get in touch with you.",
+      "success": "We will do our best to respond to you as soon as possible."
     }
   }
 }
