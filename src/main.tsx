@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 
 import { Toaster } from '@/components/ui/toaster';
+import { Providers } from '@/providers';
 
-import { Providers } from './components/providers';
 import { App } from './app';
 
 import './styles/globals.css';

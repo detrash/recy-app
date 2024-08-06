@@ -16,7 +16,7 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { useCalculatorStore } from '@/stores/use-calculator';
+import { useCalculatorStore } from '@/modules/calculator/stores/use-calculator';
 
 const checkoutFormValue = z.object({
   terms_and_conditions: z.boolean({

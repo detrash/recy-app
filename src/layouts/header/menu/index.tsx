@@ -7,7 +7,7 @@ import { Icon } from '@iconify/react';
 import { useWeb3Modal } from '@web3modal/wagmi/react';
 import { useAccount } from 'wagmi';
 
-import LocaleToggler from '@/components/common/locale-toggler';
+import LocaleToggler from '@/components/locale-toggler';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import {
@@ -23,7 +23,7 @@ import {
   NavigationMenuList,
   navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu';
-import { LINKS } from '@/constants';
+import { LINKS } from '@/config/constants';
 import { cn } from '@/utils/cn';
 
 export const Menu = () => {
