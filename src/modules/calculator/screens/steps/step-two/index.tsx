@@ -15,7 +15,7 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { useCalculatorStore } from '@/stores/use-calculator';
+import { useCalculatorStore } from '@/modules/calculator/stores';
 
 const calculatorStepTwoFormSchema = z.object({
   employees_quantity: z.string({

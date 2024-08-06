@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 
-import LocaleToggler from '@/components/common/locale-toggler';
+import LocaleToggler from '@/components/locale-toggler';
 
 export const HeaderSimple = () => {
   return (

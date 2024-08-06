@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 
-import { api } from '@/api/axios';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import {
@@ -17,6 +16,7 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/components/ui/use-toast';
+import { api } from '@/libs/axios';
 
 const contactFormValue = z.object({
   email: z.string().email(),
@@ -24,7 +24,7 @@ const contactFormValue = z.object({
 
 type ContactFormValues = z.infer<typeof contactFormValue>;
 
-export const CalculatorContactScreen = () => {
+export default function CalculatorContactScreen() {
   const { toast } = useToast();
   const { t } = useTranslation();
   const form = useForm<ContactFormValues>({
@@ -106,4 +106,4 @@ export const CalculatorContactScreen = () => {
       </Card>
     </div>
   );
-};
+}

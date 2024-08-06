@@ -1,7 +1,7 @@
 import { withAuth0, WithAuth0Props, withAuthenticationRequired } from '@auth0/auth0-react';
 import SumsubWebSdk from '@sumsub/websdk-react';
 
-import { getSDKAccessToken } from '@/api';
+import { getSDKAccessToken } from '@/libs';
 
 function KYC(props: WithAuth0Props) {
   return (

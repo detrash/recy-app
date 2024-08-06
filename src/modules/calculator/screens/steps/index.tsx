@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { useCalculatorStore } from '@/stores/use-calculator';
+import { useCalculatorStore } from '@/modules/calculator/stores';
 
 import { CalculatorStepOne } from './step-one';
 import { CalculatorStepTwo } from './step-two';
