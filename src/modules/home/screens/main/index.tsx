@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 
-import LocaleToggler from '@/components/common/locale-toggler';
+import LocaleToggler from '@/components/locale-toggler';
 import { Button } from '@/components/ui/button';
 
 export default function HomeScreen() {

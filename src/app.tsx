@@ -1,20 +1,20 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
+import { Header } from '@/layouts/header';
 import { HeaderSimple } from '@/modules/calculator/components/header';
+import Calculator from '@/pages/calculator';
+import CalculatorContact from '@/pages/calculator/contact';
+import CalculatorResult from '@/pages/calculator/result';
+import CalculatorSteps from '@/pages/calculator/steps';
+import Dashboard from '@/pages/dashboard';
+import Home from '@/pages/home';
+import KYC from '@/pages/kyc';
+import Onboarding from '@/pages/onboarding';
+import Profile from '@/pages/profile';
+import Submit from '@/pages/submit';
 
-import '@/config/i18next';
+import '@/libs/i18next';
 
-import { Header } from './components/ui/layouts/header';
-import { CalculatorContactScreen } from './modules/calculator/screens/contact';
-import CalculatorResultScreen from './modules/calculator/screens/result';
-import Calculator from './routes/calculator';
-import CalculatorStepsScreen from './routes/calculator/steps';
-import Dashboard from './routes/dashboard';
-import KYC from './routes/kyc-test';
-import Onboarding from './routes/onboarding';
-import Profile from './routes/profile';
-import Root from './routes/root';
-import Submit from './routes/submit';
 
 const router = createBrowserRouter([
   {
@@ -58,15 +58,15 @@ const router = createBrowserRouter([
   {
     children: [
       {
-        element: <CalculatorContactScreen />,
+        element: <CalculatorContact />,
         path: '/calculator/contact',
       },
       {
-        element: <CalculatorStepsScreen />,
+        element: <CalculatorSteps />,
         path: '/calculator/steps',
       },
       {
-        element: <CalculatorResultScreen />,
+        element: <CalculatorResult />,
         path: '/calculator/result',
       },
       {
@@ -77,7 +77,7 @@ const router = createBrowserRouter([
     element: <HeaderSimple />,
   },
   {
-    element: <Root />,
+    element: <Home />,
     path: '/',
   },
 ]);
