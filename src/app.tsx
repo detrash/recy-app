@@ -15,7 +15,6 @@ import Submit from '@/pages/submit';
 
 import '@/libs/i18next';
 
-
 const router = createBrowserRouter([
   {
     children: [

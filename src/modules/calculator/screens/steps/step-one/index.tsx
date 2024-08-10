@@ -1,8 +1,8 @@
+import { zodResolver } from '@hookform/resolvers/zod';
+import { ArrowLeft } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { ArrowLeft } from 'lucide-react';
 import { z } from 'zod';
 
 import { Button } from '@/components/ui/button';
@@ -31,8 +31,10 @@ const calculatorStepOneFormSchema = z.object({
 
 type CalculatorStepOneFormValues = z.infer<typeof calculatorStepOneFormSchema>;
 
-export const CalculatorStepOne = () => {
-  const { setInputs, setNextStep, inputs, currentStep, setPreviousStep } = useCalculatorStore();
+export function CalculatorStepOne() {
+  const {
+    setInputs, setNextStep, inputs, currentStep, setPreviousStep,
+  } = useCalculatorStore();
 
   const { t } = useTranslation();
 
@@ -92,10 +94,12 @@ export const CalculatorStepOne = () => {
                   </FormControl>
                   <SelectContent>
                     <SelectItem value="product">
-                      {t('calculator.steps.one.select.options.product')}{' '}
+                      {t('calculator.steps.one.select.options.product')}
+                      {' '}
                     </SelectItem>
                     <SelectItem value="service">
-                      {t('calculator.steps.one.select.options.service')}{' '}
+                      {t('calculator.steps.one.select.options.service')}
+                      {' '}
                     </SelectItem>
                   </SelectContent>
                 </Select>
@@ -122,4 +126,4 @@ export const CalculatorStepOne = () => {
       </footer>
     </Form>
   );
-};
+}

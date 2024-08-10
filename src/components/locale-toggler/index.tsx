@@ -1,6 +1,7 @@
 'use client';
-import { useTranslation } from 'react-i18next';
+
 import { CheckIcon, LanguagesIcon } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 import {
   DropdownMenu,
@@ -55,7 +56,9 @@ export default function LocaleToggler() {
             disabled={locale.value === currentLocale}
           >
             <span className="cursor-pointer">
-              {locale.name} {locale.icon}
+              {locale.name}
+              {' '}
+              {locale.icon}
             </span>
             {locale.value === currentLocale ? (
               <DropdownMenuShortcut>

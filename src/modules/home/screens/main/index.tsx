@@ -1,7 +1,8 @@
 import { Suspense } from 'react';
+
+import { useAuth0 } from '@auth0/auth0-react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { useAuth0 } from '@auth0/auth0-react';
 
 import LocaleToggler from '@/components/locale-toggler';
 import { Button } from '@/components/ui/button';
@@ -38,8 +39,8 @@ export default function HomeScreen() {
             <span className="text-6xl font-bold text-primary lg:text-7xl">Recy App</span>
           </div>
           <p className="text-xl text-gray-500">
-            Let's end waste pollution at its source. Let's transform how we think about trash and
-            recycling.
+            Let&apos;s end waste pollution at its source.
+            Let&apos;s transform how we think about trash and recycling.
           </p>
           <Button onClick={() => loginWithRedirect()} size="lg" className="w-full">
             {t('home.login')}

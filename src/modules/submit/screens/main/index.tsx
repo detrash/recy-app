@@ -2,8 +2,7 @@ import { useState } from 'react';
 
 import { Definitions } from '@/modules/submit/components/definitions';
 import { Details } from '@/modules/submit/components/details';
-
-import { Done } from '../../components/done';
+import { Done } from '@/modules/submit/components/done';
 
 export default function SubmitScreen() {
   const [formStep, setFormStep] = useState('definitions');
