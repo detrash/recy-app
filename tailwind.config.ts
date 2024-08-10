@@ -3,7 +3,7 @@ import { type Config } from 'tailwindcss';
 const config = {
   content: ['./pages/**/*.{ts,tsx}', './components/**/*.{ts,tsx}', './src/**/*.{ts,tsx}'],
   darkMode: ['class'],
-  // eslint-disable-next-line unicorn/prefer-module
+  // eslint-disable-next-line global-require, unicorn/prefer-module
   plugins: [require('tailwindcss-animate')],
   prefix: '',
   theme: {

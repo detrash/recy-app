@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unused-modules */
 import react from '@vitejs/plugin-react';
 import { loadEnv } from 'vite';
 import tsconfigPaths from 'vite-tsconfig-paths';

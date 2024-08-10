@@ -1,8 +1,8 @@
+import { zodResolver } from '@hookform/resolvers/zod';
+import { ArrowLeft } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { ArrowLeft } from 'lucide-react';
 import { z } from 'zod';
 
 import { Button } from '@/components/ui/button';
@@ -25,8 +25,10 @@ const calculatorStepTwoFormSchema = z.object({
 
 type CalculatorStepTwoFormValues = z.infer<typeof calculatorStepTwoFormSchema>;
 
-export const CalculatorStepTwo = () => {
-  const { setInputs, inputs, currentStep, setPreviousStep } = useCalculatorStore();
+export function CalculatorStepTwo() {
+  const {
+    setInputs, inputs, currentStep, setPreviousStep,
+  } = useCalculatorStore();
 
   const { t } = useTranslation();
 
@@ -107,4 +109,4 @@ export const CalculatorStepTwo = () => {
       </footer>
     </Form>
   );
-};
+}

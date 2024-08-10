@@ -2,7 +2,7 @@ import { Outlet } from 'react-router-dom';
 
 import { Menu } from './menu';
 
-export const Header = () => {
+export function Header() {
   return (
     <>
       <header className="sticky top-0 mx-auto mb-8 flex w-full items-center justify-between border-b bg-white p-4">
@@ -13,4 +13,4 @@ export const Header = () => {
       <Outlet />
     </>
   );
-};
+}
