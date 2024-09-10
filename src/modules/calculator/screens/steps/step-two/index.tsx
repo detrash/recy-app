@@ -1,8 +1,8 @@
+import { zodResolver } from '@hookform/resolvers/zod';
+import { ArrowLeft } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { ArrowLeft } from 'lucide-react';
 import { z } from 'zod';
 
 import { Button } from '@/components/ui/button';
@@ -14,19 +14,25 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 import { useCalculatorStore } from '@/modules/calculator/stores';
 
 const calculatorStepTwoFormSchema = z.object({
-  employees_quantity: z.string({
-    required_error: 'Please select a employees quantity to display.',
+  company_type: z.string({
+    required_error: 'Please select a option to display.',
   }),
 });
 
 type CalculatorStepTwoFormValues = z.infer<typeof calculatorStepTwoFormSchema>;
 
 export const CalculatorStepTwo = () => {
-  const { setInputs, inputs, currentStep, setPreviousStep } = useCalculatorStore();
+  const { setInputs, setNextStep, inputs, currentStep, setPreviousStep } = useCalculatorStore();
 
   const { t } = useTranslation();
 
@@ -34,7 +40,7 @@ export const CalculatorStepTwo = () => {
 
   const form = useForm<CalculatorStepTwoFormValues>({
     defaultValues: {
-      employees_quantity: inputs.employees_quantity ? String(inputs.employees_quantity) : undefined,
+      company_type: inputs.company_type,
     },
     mode: 'onChange',
     resolver: zodResolver(calculatorStepTwoFormSchema),
@@ -42,15 +48,11 @@ export const CalculatorStepTwo = () => {
 
   const defaultValuesWatched = form.watch();
 
-  const canForwardButton = !!defaultValuesWatched.employees_quantity;
+  const canForwardButton = !!defaultValuesWatched.company_type;
 
   function onSubmit(data: CalculatorStepTwoFormValues) {
-    setInputs({
-      ...inputs,
-      employees_quantity: Number(data.employees_quantity),
-    });
-
-    navigate('/calculator/result');
+    setInputs(data);
+    setNextStep();
   }
 
   const handleBackNavigate = () => {
@@ -78,13 +80,25 @@ export const CalculatorStepTwo = () => {
         <section>
           <FormField
             control={form.control}
-            name="employees_quantity"
+            name="company_type"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>{t('calculator.steps.two.label')}</FormLabel>
-                <FormControl>
-                  <Input {...field} />
-                </FormControl>
+                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                  <FormControl>
+                    <SelectTrigger>
+                      <SelectValue placeholder={t('calculator.steps.two.select.placeholder')} />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    <SelectItem value="product">
+                      {t('calculator.steps.two.select.options.product')}{' '}
+                    </SelectItem>
+                    <SelectItem value="service">
+                      {t('calculator.steps.two.select.options.service')}{' '}
+                    </SelectItem>
+                  </SelectContent>
+                </Select>
                 <FormMessage />
               </FormItem>
             )}
@@ -96,6 +110,7 @@ export const CalculatorStepTwo = () => {
         <Button variant="outline" size="icon" onClick={handleBackNavigate}>
           <ArrowLeft />
         </Button>
+
         <Button
           className="w-full"
           type="submit"
@@ -107,4 +122,4 @@ export const CalculatorStepTwo = () => {
       </footer>
     </Form>
   );
-};
+}

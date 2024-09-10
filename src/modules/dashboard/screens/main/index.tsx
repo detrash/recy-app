@@ -1,9 +1,13 @@
-import { useTranslation } from 'react-i18next';
 import { useAuth0 } from '@auth0/auth0-react';
 import { Icon } from '@iconify/react';
-import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from 'recharts';
+import { useTranslation } from 'react-i18next';
+import {
+  Bar, BarChart, ResponsiveContainer, XAxis, YAxis,
+} from 'recharts';
 
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  Card, CardContent, CardHeader, CardTitle,
+} from '@/components/ui/card';
 
 const data = [
   {
@@ -40,7 +44,9 @@ export default function DashboardScreen() {
   return (
     <section className="container flex flex-col gap-8">
       <h1 className="text-xl font-bold text-gray-900 sm:text-3xl">
-        {t('dashboard:welcome_to_app')} {user?.name}
+        {t('dashboard:welcome_to_app')}
+        {' '}
+        {user?.name}
       </h1>
 
       <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -325,7 +331,10 @@ export default function DashboardScreen() {
           <CardHeader>
             <CardTitle>Forms submitted</CardTitle>
           </CardHeader>
-          <CardContent>Forms {/* TODO: Data Table */}</CardContent>
+          <CardContent>
+            Forms
+            {/* TODO: Data Table */}
+          </CardContent>
         </Card>
       </section>
     </section>

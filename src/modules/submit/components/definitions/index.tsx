@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 // import { useAuth0 } from '@auth0/auth0-react';
 
-export const Definitions = ({ onFormStep }: { onFormStep: (step: string) => void }) => {
+export function Definitions({ onFormStep }: { onFormStep: (step: string) => void }) {
   const { t } = useTranslation();
 
   // const { user } = useAuth0();
@@ -16,7 +16,9 @@ export const Definitions = ({ onFormStep }: { onFormStep: (step: string) => void
         <p className="text-sm text-gray-600">{t('submit:submit_description1')}</p>
         <p className="text-sm text-gray-600">{t('submit:submit_description2')}</p>
         <p className="mt-2">
-          {t('common:wallet')}: <span className="font-bold">{t('submit:not_connected')}</span>
+          {t('common:wallet')}
+          :
+          <span className="font-bold">{t('submit:not_connected')}</span>
         </p>
       </section>
 
@@ -24,7 +26,7 @@ export const Definitions = ({ onFormStep }: { onFormStep: (step: string) => void
         <h2 className="mb-4 border-b-[1px] pb-1 text-sm font-bold uppercase">
           {t('submit:type_of_residues')}
         </h2>
-        <div className="grid grid-cols-6 gap-3">// checkboxs</div>
+        <div className="grid grid-cols-6 gap-3">checkboxs</div>
       </section>
 
       <div className="mt-auto flex items-end justify-center">
@@ -38,4 +40,4 @@ export const Definitions = ({ onFormStep }: { onFormStep: (step: string) => void
       </div>
     </div>
   );
-};
+}

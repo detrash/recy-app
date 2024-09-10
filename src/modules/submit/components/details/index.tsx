@@ -1,8 +1,8 @@
+import { zodResolver } from '@hookform/resolvers/zod';
+import { ArrowLeft } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { redirect } from 'react-router-dom';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { ArrowLeft } from 'lucide-react';
 import { z } from 'zod';
 
 // import { Button } from '@/components/ui/button';
@@ -37,7 +37,7 @@ const welcomeFormSchema = z.object({
 
 type WelcomeFormValues = z.infer<typeof welcomeFormSchema>;
 
-export const Details = ({ onFormStep }: { onFormStep: (step: string) => void }) => {
+export function Details({ onFormStep }: { onFormStep: (step: string) => void }) {
   const { t } = useTranslation();
 
   const form = useForm<WelcomeFormValues>({
@@ -46,7 +46,6 @@ export const Details = ({ onFormStep }: { onFormStep: (step: string) => void }) 
   });
 
   function onSubmit(data: WelcomeFormValues) {
-    console.log(data);
     toast({
       description: (
         <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
@@ -64,7 +63,8 @@ export const Details = ({ onFormStep }: { onFormStep: (step: string) => void }) 
       <form className="flex flex-1 flex-col gap-4 sm:gap-12" onSubmit={form.handleSubmit(onSubmit)}>
         <section>
           <h2 className="mb-1 text-2xl font-bold leading-relaxed text-gray-800 antialiased">
-            {t('submit:details_title1')}{' '}
+            {t('submit:details_title1')}
+            {' '}
             {/* <span className="text-secondary">{t(`common:${wasteType.toLowerCase()}`)}</span>
              */}
             <span className="text-secondary">Plastic</span>
@@ -99,4 +99,4 @@ export const Details = ({ onFormStep }: { onFormStep: (step: string) => void }) 
       </form>
     </Form>
   );
-};
+}
