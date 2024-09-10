@@ -14,45 +14,43 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
+import { Input } from '@/components/ui/input';
 import { useCalculatorStore } from '@/modules/calculator/stores';
 
-const calculatorStepTwoFormSchema = z.object({
-  company_type: z.string({
-    required_error: 'Please select a option to display.',
+const calculatorStepThreeFormSchema = z.object({
+  employees_quantity: z.string({
+    required_error: 'Please select a employees quantity to display.',
   }),
 });
 
-type CalculatorStepTwoFormValues = z.infer<typeof calculatorStepTwoFormSchema>;
+type CalculatorStepThreeFormValues = z.infer<typeof calculatorStepThreeFormSchema>;
 
-export const CalculatorStepTwo = () => {
-  const { setInputs, setNextStep, inputs, currentStep, setPreviousStep } = useCalculatorStore();
+export const CalculatorStepThree = () => {
+  const { setInputs, inputs, currentStep, setPreviousStep } = useCalculatorStore();
 
   const { t } = useTranslation();
 
   const navigate = useNavigate();
 
-  const form = useForm<CalculatorStepTwoFormValues>({
+  const form = useForm<CalculatorStepThreeFormValues>({
     defaultValues: {
-      company_type: inputs.company_type,
+      employees_quantity: inputs.employees_quantity ? String(inputs.employees_quantity) : undefined,
     },
     mode: 'onChange',
-    resolver: zodResolver(calculatorStepTwoFormSchema),
+    resolver: zodResolver(calculatorStepThreeFormSchema),
   });
 
   const defaultValuesWatched = form.watch();
 
-  const canForwardButton = !!defaultValuesWatched.company_type;
+  const canForwardButton = !!defaultValuesWatched.employees_quantity;
 
-  function onSubmit(data: CalculatorStepTwoFormValues) {
-    setInputs(data);
-    setNextStep();
+  function onSubmit(data: CalculatorStepThreeFormValues) {
+    setInputs({
+      ...inputs,
+      employees_quantity: Number(data.employees_quantity),
+    });
+
+    navigate('/calculator/result');
   }
 
   const handleBackNavigate = () => {
@@ -73,32 +71,20 @@ export const CalculatorStepTwo = () => {
       >
         <section className="mb-3 sm:m-0">
           <h2 className="mb-1 text-2xl font-bold leading-relaxed text-gray-800 antialiased sm:text-3xl">
-            {t('calculator.steps.two.title')}
+            {t('calculator.steps.three.title')}
           </h2>
         </section>
 
         <section>
           <FormField
             control={form.control}
-            name="company_type"
+            name="employees_quantity"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>{t('calculator.steps.two.label')}</FormLabel>
-                <Select onValueChange={field.onChange} defaultValue={field.value}>
-                  <FormControl>
-                    <SelectTrigger>
-                      <SelectValue placeholder={t('calculator.steps.two.select.placeholder')} />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    <SelectItem value="product">
-                      {t('calculator.steps.two.select.options.product')}{' '}
-                    </SelectItem>
-                    <SelectItem value="service">
-                      {t('calculator.steps.two.select.options.service')}{' '}
-                    </SelectItem>
-                  </SelectContent>
-                </Select>
+                <FormLabel>{t('calculator.steps.three.label')}</FormLabel>
+                <FormControl>
+                  <Input {...field} />
+                </FormControl>
                 <FormMessage />
               </FormItem>
             )}
@@ -110,7 +96,6 @@ export const CalculatorStepTwo = () => {
         <Button variant="outline" size="icon" onClick={handleBackNavigate}>
           <ArrowLeft />
         </Button>
-
         <Button
           className="w-full"
           type="submit"

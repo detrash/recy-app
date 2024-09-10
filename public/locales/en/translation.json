@@ -21,6 +21,16 @@
     "steps": {
       "button": "Advance",
       "one": {
+        "title": "Are you seeking the certificate for yourself or for your company?",
+        "select": {
+          "placeholder": "Select",
+          "options": {
+            "individual": "For Myself",
+            "company": "For my company"
+          }
+        }
+      },
+      "two": {
         "title": "Your business sells a service or a product?",
         "label": "Company Type",
         "select": {
@@ -31,7 +41,7 @@
           }
         }
       },
-      "two": {
+      "three": {
         "title": "How many employees does your company have? product?",
         "label": "Employees Quantity"
       }
