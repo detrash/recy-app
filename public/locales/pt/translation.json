@@ -22,6 +22,16 @@
       "employees": "Quantos funcionários sua empresa tem?",
       "button": "Avançar",
       "one": {
+        "title": "Você está buscando o certificado para você ou para sua empresa?",
+        "select": {
+          "placeholder": "Selecione",
+          "options": {
+            "individual": "Para Mim",
+            "company": "Para minha empresa"
+          }
+        }
+      },
+      "two": {
         "title": "Sua empresa vende um serviço ou um produto?",
         "label": "Tipo de Negócio",
         "select": {
@@ -32,13 +42,13 @@
           }
         }
       },
-      "two": {
+      "three": {
         "title": "Quantos funcionários sua empresa tem?",
         "label": "Quantidade de funcionários"
       }
     },
     "result": {
-      "title": "Seu negócio a um passo de limpar o mundo com Recy!",
+      "title": "Estamos a um passo de avançar na limpeza do mundo.",
       "text": "Por favor, nos forneça o endereço público da sua carteira digital para receber nossos ativos digitais. (De preferência Valora Wallet, Metamask ou Trust Wallet)",
       "label": "Endereço público da sua Carteira Digital",
       "terms": {
