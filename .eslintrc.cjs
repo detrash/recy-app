@@ -1,71 +1,154 @@
+const tsconfig = require('./tsconfig.json');
+
 module.exports = {
   root: true,
   env: { browser: true, es2020: true },
   extends: [
+    'airbnb',
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
+    'plugin:react/recommended',
     'plugin:react-hooks/recommended',
+    'plugin:import/recommended',
+    'plugin:import/typescript',
     'plugin:unicorn/recommended',
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
-  plugins: ['react-refresh', 'simple-import-sort', 'canonical'],
+  plugins: ['react-refresh', 'simple-import-sort', 'import'],
   rules: {
-    'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
-    'canonical/filename-match-exported': 0,
-    'canonical/filename-match-regex': 0,
-    'canonical/filename-no-index': 0,
-    'canonical/id-match': 0,
-    'canonical/no-restricted-strings': 0,
-    'canonical/no-use-extend-native': 2,
-    'canonical/prefer-inline-type-import': 2,
-    'canonical/sort-keys': [
-      2,
-      'asc',
+    // Eslint
+    'no-console': 'error',
+    'no-confusing-arrow': 'error',
+    'no-else-return': 'error',
+    'no-empty-function': 'error',
+    'no-inline-comments': 'error',
+    'no-nested-ternary': 'error',
+    'arrow-body-style': 0,
+    'no-use-before-define': 'off',
+    "default-case": "off",
+    'no-restricted-imports': [
+      'error',
       {
-        caseSensitive: false,
-        natural: true,
-      },
-    ],
-    'unicorn/better-regex': 'warn',
-    'unicorn/prevent-abbreviations': [
-      2,
-      {
-        replacements: {
-          args: false,
-          props: false,
-          ref: false,
-        },
-      },
-    ],
-    'simple-import-sort/imports': 'error',
-    'simple-import-sort/exports': 'error',
-  },
-  overrides: [
-    // override "simple-import-sort" config
-    {
-      files: ['*.js', '*.jsx', '*.ts', '*.tsx'],
-      rules: {
-        'simple-import-sort/imports': [
-          'error',
+        patterns: [
           {
-            groups: [
-              // Packages `react` related packages come first.
-              ['^react', '^@?\\w', '^next'],
-              // Internal packages.
-              ['^(@|components)(/.*|$)'],
-              // Side effect imports.
-              ['^\\u0000'],
-              // Parent imports. Put `..` last.
-              ['^\\.\\.(?!/?$)', '^\\.\\./?$'],
-              // Other relative imports. Put same-folder imports and `.` last.
-              ['^\\./(?=.*/)(?!/?$)', '^\\.(?!/?$)', '^\\./?$'],
-              // Style imports.
-              ['^.+\\.?(css)$'],
-            ],
+            group: ['../../*'],
+            message: 'Use absolute imports instead.',
           },
         ],
       },
+    ],
+    'capitalized-comments': 'off',
+    'consistent-return': 'off',
+    "no-restricted-syntax": "off",
+    complexity: ['error', { max: 20 }],
+    'dot-notation': 'error',
+    eqeqeq: 'error',
+    'react-hooks/exhaustive-deps': 'off',
+     "no-shadow": "off",
+    // React
+    'react/jsx-no-bind': 'error',
+    'react/no-array-index-key': 'error',
+    'react/no-unstable-nested-components': 'error',
+    'react/prop-types': 'off',
+    'react/display-name': 'off',
+    'react/jsx-filename-extension': 'off',
+    'react/jsx-props-no-spreading': 'off',
+    'react/no-unused-prop-types': 'off',
+    'react/react-in-jsx-scope': 'off',
+    'react/require-default-props': 'off',
+    'react/jsx-no-constructed-context-values': 'off',
+    // Typescript
+    '@typescript-eslint/consistent-type-imports': 'warn',
+    '@typescript-eslint/no-explicit-any': 'error',
+    '@typescript-eslint/no-unused-vars': 'error',
+    '@typescript-eslint/no-var-requires': 'off',
+    '@typescript-eslint/no-namespace': 'off',
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/no-var-requires': 'off',
+    '@typescript-eslint/quotes': [
+      2,
+      'single',
+      {
+        avoidEscape: true,
+      },
+    ],
+    // Unicorn
+    'unicorn/no-abusive-eslint-disable': 'error',
+    'unicorn/explicit-length-check': 'error',
+    'unicorn/consistent-function-scoping': 'error',
+    'unicorn/consistent-destructuring': 'error',
+    'unicorn/no-empty-file': 'error',
+    'unicorn/no-for-loop': 'error',
+    'unicorn/no-instanceof-array': 'error',
+    'unicorn/no-invalid-remove-event-listener': 'error',
+    'unicorn/no-lonely-if': 'error',
+    'unicorn/no-nested-ternary': 'error',
+    'unicorn/no-new-array': 'error',
+    'unicorn/no-unused-properties': 'error',
+    'unicorn/no-useless-fallback-in-spread': 'error',
+    'unicorn/no-useless-length-check': 'error',
+    'unicorn/no-useless-spread': 'error',
+    'unicorn/prefer-add-event-listener': 'error',
+    'unicorn/prefer-array-find': 'error',
+    'unicorn/prefer-array-flat': 'error',
+    'unicorn/prefer-array-flat-map': 'error',
+    'unicorn/prefer-array-index-of': 'error',
+    'unicorn/prefer-array-some': 'error',
+    'unicorn/prefer-date-now': 'error',
+    'unicorn/prefer-ternary': 'error',
+    'unicorn/prevent-abbreviations': 'off',
+    // Imports
+    'import/prefer-default-export': 'off',
+    'import/namespace': 'off',
+    'import/no-duplicates': 'error',
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        js: 'never',
+        jsx: 'never',
+        ts: 'never',
+        tsx: 'never',
+      },
+    ],
+    'import/order': [
+      'error',
+      {
+        groups: [['builtin', 'external'], 'internal', ['sibling', 'index']],
+        pathGroups: [
+          {
+            pattern: 'react',
+            group: 'external',
+            position: 'before',
+          },
+          ...Object.keys(tsconfig.compilerOptions.paths).map((key) => ({
+            pattern: '${key}*',
+            group: 'internal',
+            position: 'after',
+          })),
+        ],
+        pathGroupsExcludedImportTypes: ['builtin', 'sibling', 'index', 'object', 'type'],
+        alphabetize: {
+          order: 'asc',
+          caseInsensitive: true,
+        },
+        'newlines-between': 'always',
+      },
+    ],
+    'import/no-unused-modules': 'off',
+  },
+  overrides: [
+    {
+      files: ['**/*.test.ts?(x)'],
+      extends: ['plugin:testing-library/react'],
     },
   ],
+  settings: {
+    'import/resolver': {
+      typescript: true,
+      node: true,
+    },
+  },
 };

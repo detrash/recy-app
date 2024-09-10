@@ -1,7 +1,8 @@
 import { useState } from 'react';
+
+import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 
 import { Button } from '@/components/ui/button';
@@ -39,7 +40,6 @@ export default function CalculatorContactScreen() {
     const BASE_URL = import.meta.env.VITE_AWS_LAMBDA;
     const ENVIRONMENT = import.meta.env.PROD ? 'production' : 'staging';
     const ENDPOINT = `${BASE_URL}/${ENVIRONMENT}/user/support`;
-  
 
     try {
       const response = await api.post(ENDPOINT, { email: data.email });
@@ -47,14 +47,14 @@ export default function CalculatorContactScreen() {
       if (response.status === 200) {
         form.reset({ email: '' });
 
-        return toast({
+        toast({
           title: t('calculator.contact.success'),
         });
 
+        return;
       }
 
       throw new Error(response.data.error.message);
-
     } catch (error) {
       if (error instanceof Error) {
         toast({

@@ -1,4 +1,4 @@
-import { PropsWithChildren } from 'react';
+import type { PropsWithChildren } from 'react';
 
 import { AuthProvider } from './auth-provider';
 import { Web3ModalProvider } from './web3-modal-provider';

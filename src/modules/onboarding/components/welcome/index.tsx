@@ -1,9 +1,9 @@
-import { useTranslation } from 'react-i18next';
 import { useAuth0 } from '@auth0/auth0-react';
+import { useTranslation } from 'react-i18next';
 
 import { Button } from '@/components/ui/button';
 
-export const Welcome = ({ onGetStarted }: { onGetStarted: () => void }) => {
+export function Welcome({ onGetStarted }: { onGetStarted: () => void }) {
   const { t } = useTranslation();
 
   const { user } = useAuth0();
@@ -39,4 +39,4 @@ export const Welcome = ({ onGetStarted }: { onGetStarted: () => void }) => {
       </div>
     </div>
   );
-};
+}
