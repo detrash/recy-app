@@ -21,7 +21,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { useCalculatorStore } from '@/stores/use-calculator';
+import { useCalculatorStore } from '@/modules/calculator/stores';
 
 const calculatorStepOneFormSchema = z.object({
   company_type: z.string({

@@ -1,5 +1,5 @@
 import CalculatorResultScreen from '@/modules/calculator/screens/result';
 
-export default function Calculator() {
+export default function CalculatorResult() {
   return <CalculatorResultScreen />;
 }
