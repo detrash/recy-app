@@ -1,7 +1,9 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
+
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { createWeb3Modal } from '@web3modal/wagmi/react';
-import { State, WagmiProvider } from 'wagmi';
+import type { State } from 'wagmi';
+import { WagmiProvider } from 'wagmi';
 
 import { projectId, wagmiConfig } from '@/libs/wagmi';
 
@@ -17,7 +19,8 @@ createWeb3Modal({
   enableOnramp: true,
 
   projectId,
-  wagmiConfig, // Optional - false as default
+  // Optional - false as default
+  wagmiConfig,
 });
 
 export function Web3ModalProvider({

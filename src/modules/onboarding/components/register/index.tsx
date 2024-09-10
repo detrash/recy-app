@@ -1,7 +1,7 @@
+import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { redirect } from 'react-router-dom';
-import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 
 import { Button } from '@/components/ui/button';
@@ -36,7 +36,7 @@ const welcomeFormSchema = z.object({
 
 type WelcomeFormValues = z.infer<typeof welcomeFormSchema>;
 
-export const Register = () => {
+export function Register() {
   const { t } = useTranslation();
 
   const form = useForm<WelcomeFormValues>({
@@ -45,7 +45,6 @@ export const Register = () => {
   });
 
   function onSubmit(data: WelcomeFormValues) {
-    console.log(data);
     toast({
       description: (
         <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
@@ -103,7 +102,8 @@ export const Register = () => {
 
         <section>
           <h2 className="mb-4 border-b-[1px] pb-1 text-sm font-bold uppercase">
-            {t('onboarding:select_profile')}:
+            {t('onboarding:select_profile')}
+            :
           </h2>
           <div className="grid gap-3 sm:grid-cols-3">
             <RadioGroup defaultValue="option-one">
@@ -124,9 +124,9 @@ export const Register = () => {
         </section>
 
         <div className="mt-auto flex items-end justify-center">
-          <Button type="submit">t('onboarding:creating_user')</Button>
+          <Button type="submit">{t('onboarding:creating_user')}</Button>
         </div>
       </form>
     </Form>
   );
-};
+}

@@ -1,10 +1,11 @@
 'use client';
 
 import { Suspense } from 'react';
-import { Link } from 'react-router-dom';
+
 import { useAuth0 } from '@auth0/auth0-react';
 import { Icon } from '@iconify/react';
 import { useWeb3Modal } from '@web3modal/wagmi/react';
+import { Link } from 'react-router-dom';
 import { useAccount } from 'wagmi';
 
 import LocaleToggler from '@/components/locale-toggler';
@@ -23,10 +24,10 @@ import {
   NavigationMenuList,
   navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu';
-import { LINKS } from '@/config/constants';
+import { ROUTES } from '@/config/routes';
 import { cn } from '@/utils/cn';
 
-export const Menu = () => {
+export function Menu() {
   const { user, logout } = useAuth0();
   const { open } = useWeb3Modal();
   const { address, isConnected } = useAccount();
@@ -35,7 +36,7 @@ export const Menu = () => {
     <NavigationMenu className="flex min-w-full justify-between">
       <NavigationMenuList>
         <NavigationMenuItem>
-          <Link to={LINKS.HOME}>
+          <Link to={ROUTES.PUBLIC.HOME()}>
             <img
               src="/assets/brand/recy-logo.png"
               width={64}
@@ -47,7 +48,7 @@ export const Menu = () => {
         </NavigationMenuItem>
 
         <NavigationMenuItem>
-          <Link className={`${navigationMenuTriggerStyle()}`} to={LINKS.APP}>
+          <Link className={`${navigationMenuTriggerStyle()}`} to={ROUTES.PRIVATE.DASHBOARD()}>
             Dashboard
             <Icon
               icon="material-symbols-light:team-dashboard-outline"
@@ -59,20 +60,22 @@ export const Menu = () => {
         </NavigationMenuItem>
 
         <NavigationMenuItem>
-          <Link className={navigationMenuTriggerStyle()} to={LINKS.SUBMIT_FORM}>
-            Submit Form <Icon icon="ph:recycle" width="16" height="16" className="ml-1" />
+          <Link className={navigationMenuTriggerStyle()} to={ROUTES.PRIVATE.SUBMIT_FORM()}>
+            Submit Form
+            {' '}
+            <Icon icon="ph:recycle" width="16" height="16" className="ml-1" />
           </Link>
         </NavigationMenuItem>
 
         <NavigationMenuItem>
-          <Link className={navigationMenuTriggerStyle()} to={LINKS.ADMIN_PANEL}>
+          <Link className={navigationMenuTriggerStyle()} to={ROUTES.PRIVATE.ADMIN()}>
             Admin
             <Icon icon="ic:sharp-admin-panel-settings" width="16" height="16" className="ml-1" />
           </Link>
         </NavigationMenuItem>
 
         <NavigationMenuItem>
-          <Link className={navigationMenuTriggerStyle()} to={LINKS.KYC}>
+          <Link className={navigationMenuTriggerStyle()} to={ROUTES.PRIVATE.KYC()}>
             KYC
             <Icon icon="ic:sharp-admin-panel-settings" width="16" height="16" className="ml-1" />
           </Link>
@@ -86,7 +89,7 @@ export const Menu = () => {
             onClick={() => open()}
           >
             {isConnected && address ? (
-              <>{`${address.slice(0, 4)}...${address.slice(-4)}`}</>
+              <p>{`${address.slice(0, 4)}...${address.slice(-4)}`}</p>
             ) : (
               <>
                 Connect Wallet
@@ -113,7 +116,7 @@ export const Menu = () => {
             <DropdownMenuContent>
               <DropdownMenuItem>
                 <Button asChild variant="link">
-                  <Link to={LINKS.PROFILE}>Your Profile</Link>
+                  <Link to={ROUTES.PRIVATE.PROFILE()}>Your Profile</Link>
                 </Button>
               </DropdownMenuItem>
               <DropdownMenuItem>
@@ -131,4 +134,4 @@ export const Menu = () => {
       </NavigationMenuList>
     </NavigationMenu>
   );
-};
+}

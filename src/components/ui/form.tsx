@@ -1,14 +1,17 @@
 import * as React from 'react';
-import {
-  Controller,
+
+import type * as LabelPrimitive from '@radix-ui/react-label';
+import { Slot } from '@radix-ui/react-slot';
+import type {
   ControllerProps,
   FieldPath,
   FieldValues,
+} from 'react-hook-form';
+import {
+  Controller,
   FormProvider,
   useFormContext,
 } from 'react-hook-form';
-import * as LabelPrimitive from '@radix-ui/react-label';
-import { Slot } from '@radix-ui/react-slot';
 
 import { Label } from '@/components/ui/label';
 import { cn } from '@/utils/cn';
@@ -24,18 +27,18 @@ type FormFieldContextValue<
 
 const FormFieldContext = React.createContext<FormFieldContextValue>({} as FormFieldContextValue);
 
-const FormField = <
+function FormField<
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
 >({
   ...props
-}: ControllerProps<TFieldValues, TName>) => {
+}: ControllerProps<TFieldValues, TName>) {
   return (
     <FormFieldContext.Provider value={{ name: props.name }}>
       <Controller {...props} />
     </FormFieldContext.Provider>
   );
-};
+}
 
 const useFormField = () => {
   const fieldContext = React.useContext(FormFieldContext);
@@ -100,7 +103,9 @@ const FormControl = React.forwardRef<
   React.ElementRef<typeof Slot>,
   React.ComponentPropsWithoutRef<typeof Slot>
 >(({ ...props }, ref) => {
-  const { error, formItemId, formDescriptionId, formMessageId } = useFormField();
+  const {
+    error, formItemId, formDescriptionId, formMessageId,
+  } = useFormField();
 
   return (
     <Slot
