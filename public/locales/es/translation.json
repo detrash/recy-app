@@ -21,6 +21,16 @@
     "steps": {
       "button": "Avance",
       "one": {
+        "title": "¿Estás buscando el certificado para ti o para tu empresa?",
+        "select": {
+          "placeholder": "Seleccionar",
+          "options": {
+            "individual": "Para Mí",
+            "company": "Para mi empresa"
+          }
+        }
+      },
+      "two": {
         "title": "Tu empresa vende un servicio o un producto?",
         "label": "Tipo de empresa",
         "select": {
@@ -31,13 +41,13 @@
           }
         }
       },
-      "two": {
+      "three": {
         "title": "Cuántos empleados tiene tu empresa?",
         "label": "Cantidad de empleados"
       }
     },
     "result": {
-      "title": "A tan solo un paso de limpiar el mundo con Recy!",
+      "title": "Estamos a un paso de avanzar en la limpieza del mundo!",
       "text": "Por favor, proporciónanos la dirección pública de la billetera digital de tu empresa para recibir nuestros activos digitales. (Preferiblemente Valora Wallet, Metamask o Trust Wallet)",
       "label": "Dirreción de Billetera",
       "terms": {

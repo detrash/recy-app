@@ -1,7 +1,9 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
+
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { createWeb3Modal } from '@web3modal/wagmi/react';
-import { State, WagmiProvider } from 'wagmi';
+import type { State } from 'wagmi';
+import { WagmiProvider } from 'wagmi';
 
 import { defaultWagmiConfig } from '@web3modal/wagmi/react/config';
 import { mainnet, sepolia } from 'wagmi/chains';

@@ -1,15 +1,13 @@
+import { CheckCircle } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { CheckCircle } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
-import { LINKS } from '@/config/constants';
-// import { useAuth0 } from '@auth0/auth0-react';
+import { ROUTES } from '@/config/routes';
 
-export const Done = () => {
+export function Done() {
   const { t } = useTranslation();
 
-  // const { user } = useAuth0();
   return (
     <div className="flex flex-1 flex-col justify-between gap-6">
       <div className="flex flex-1 flex-col">
@@ -19,7 +17,7 @@ export const Done = () => {
           <h3 className="text-lg">{t('submit:done_message')}</h3>
         </section>
         <div className="flex items-end justify-center">
-          <Link to={LINKS.APP}>
+          <Link to={ROUTES.PRIVATE.DASHBOARD()}>
             <Button className="btn btn-primary no-animation w-full text-white sm:w-auto">
               {t('submit:go_to_dashboard')}
             </Button>
@@ -28,4 +26,4 @@ export const Done = () => {
       </div>
     </div>
   );
-};
+}

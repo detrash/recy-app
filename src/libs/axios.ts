@@ -1,4 +1,4 @@
-import { Auth0ContextInterface } from '@auth0/auth0-react';
+import type { Auth0ContextInterface } from '@auth0/auth0-react';
 import axios from 'axios';
 
 export const api = axios.create({
@@ -7,13 +7,15 @@ export const api = axios.create({
 });
 
 api.interceptors.request.use(async (config) => {
-  if (config.fetchOptions?.auth0) {
-    const auth0 = config.fetchOptions.auth0 as Auth0ContextInterface;
+  const updatedConfig = { ...config };
+
+  if (updatedConfig.fetchOptions?.auth0) {
+    const auth0 = updatedConfig.fetchOptions.auth0 as Auth0ContextInterface;
 
     const { id_token: idToken } = await auth0.getAccessTokenSilently({ detailedResponse: true });
 
-    config.headers.Authorization = `Bearer ${idToken}`;
+    updatedConfig.headers.Authorization = `Bearer ${idToken}`;
   }
 
-  return config;
+  return updatedConfig;
 });

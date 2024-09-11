@@ -1,6 +1,6 @@
 'use client';
 
-import ProfileForm from '../../components/profile/profile-form';
+import ProfileForm from '@/modules/settings/components/profile/profile-form';
 
 export default function SettingsMainScreen() {
   return (

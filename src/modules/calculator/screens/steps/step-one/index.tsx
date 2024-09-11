@@ -1,19 +1,12 @@
+import { zodResolver } from '@hookform/resolvers/zod';
+import { ArrowLeft } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { ArrowLeft } from 'lucide-react';
 import { z } from 'zod';
 
 import { Button } from '@/components/ui/button';
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form';
+import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
 import {
   Select,
   SelectContent,
@@ -24,15 +17,17 @@ import {
 import { useCalculatorStore } from '@/modules/calculator/stores';
 
 const calculatorStepOneFormSchema = z.object({
-  company_type: z.string({
+  target: z.string({
     required_error: 'Please select a option to display.',
   }),
 });
 
 type CalculatorStepOneFormValues = z.infer<typeof calculatorStepOneFormSchema>;
 
-export const CalculatorStepOne = () => {
-  const { setInputs, setNextStep, inputs, currentStep, setPreviousStep } = useCalculatorStore();
+export function CalculatorStepOne() {
+  const {
+    setInputs, setNextStep, inputs, currentStep, setPreviousStep,
+  } = useCalculatorStore();
 
   const { t } = useTranslation();
 
@@ -40,7 +35,7 @@ export const CalculatorStepOne = () => {
 
   const form = useForm<CalculatorStepOneFormValues>({
     defaultValues: {
-      company_type: inputs.company_type,
+      target: inputs.target,
     },
     mode: 'onChange',
     resolver: zodResolver(calculatorStepOneFormSchema),
@@ -48,10 +43,20 @@ export const CalculatorStepOne = () => {
 
   const defaultValuesWatched = form.watch();
 
-  const canForwardButton = !!defaultValuesWatched.company_type;
+  const canForwardButton = !!defaultValuesWatched.target;
 
   function onSubmit(data: CalculatorStepOneFormValues) {
-    setInputs(data);
+    setInputs({
+      employees_quantity: 1,
+      target: data.target,
+    });
+
+    if (data.target === 'individual') {
+      navigate('/calculator/result');
+
+      return;
+    }
+
     setNextStep();
   }
 
@@ -80,10 +85,9 @@ export const CalculatorStepOne = () => {
         <section>
           <FormField
             control={form.control}
-            name="company_type"
+            name="target"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>{t('calculator.steps.one.label')}</FormLabel>
                 <Select onValueChange={field.onChange} defaultValue={field.value}>
                   <FormControl>
                     <SelectTrigger>
@@ -91,11 +95,11 @@ export const CalculatorStepOne = () => {
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    <SelectItem value="product">
-                      {t('calculator.steps.one.select.options.product')}{' '}
+                    <SelectItem value="individual">
+                      {t('calculator.steps.one.select.options.individual')}
                     </SelectItem>
-                    <SelectItem value="service">
-                      {t('calculator.steps.one.select.options.service')}{' '}
+                    <SelectItem value="company">
+                      {t('calculator.steps.one.select.options.company')}
                     </SelectItem>
                   </SelectContent>
                 </Select>
@@ -122,4 +126,4 @@ export const CalculatorStepOne = () => {
       </footer>
     </Form>
   );
-};
+}

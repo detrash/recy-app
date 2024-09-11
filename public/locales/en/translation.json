@@ -21,6 +21,16 @@
     "steps": {
       "button": "Advance",
       "one": {
+        "title": "Are you seeking the certificate for yourself or for your company?",
+        "select": {
+          "placeholder": "Select",
+          "options": {
+            "individual": "For Myself",
+            "company": "For my company"
+          }
+        }
+      },
+      "two": {
         "title": "Your business sells a service or a product?",
         "label": "Company Type",
         "select": {
@@ -31,13 +41,13 @@
           }
         }
       },
-      "two": {
+      "three": {
         "title": "How many employees does your company have? product?",
         "label": "Employees Quantity"
       }
     },
     "result": {
-      "title": "One step from cleaning the world with Recy!",
+      "title": "We are one step away from advancing the cleaning of the world!",
       "text": "Please provide us with your business digital wallet public address to receive our digital assets. (Preferably Valora Wallet, Metamask or Trust Wallet)",
       "label": "Wallet Address",
       "terms": {

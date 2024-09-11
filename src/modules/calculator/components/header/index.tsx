@@ -2,7 +2,7 @@ import { Outlet } from 'react-router-dom';
 
 import LocaleToggler from '@/components/locale-toggler';
 
-export const HeaderSimple = () => {
+export function HeaderSimple() {
   return (
     <>
       <header className="f sticky top-0 w-full border-b bg-white py-3">
@@ -33,4 +33,4 @@ export const HeaderSimple = () => {
       <Outlet />
     </>
   );
-};
+}
