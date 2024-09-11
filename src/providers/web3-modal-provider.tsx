@@ -42,7 +42,6 @@ createWeb3Modal({
   // Optional - defaults to your Cloud configuration
   enableOnramp: true,
   projectId,
-  // @ts-ignore
   wagmiConfig: config,
 });
 
@@ -54,7 +53,6 @@ export function Web3ModalProvider({
   initialState?: State;
 }) {
   return (
-    // @ts-ignore
     <WagmiProvider config={config} initialState={initialState}>
       <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
     </WagmiProvider>
